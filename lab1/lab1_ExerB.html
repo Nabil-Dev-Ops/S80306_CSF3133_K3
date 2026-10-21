@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Title of the home page -->
+    <title>Campus Coding Club</title>
+</head>
+<body>
+
+    <!--
+        ERROR REPORT (line numbers refer to the original given code):
+        Error 1  (Line 1): Missing <!DOCTYPE html> declaration before the <html> tag.
+        Error 2  (Line 1): The <html> tag is missing the lang="en" attribute.
+        Error 3  (Line 3): The <title> tag is not closed with </title>.
+        Error 4  (Line 7): The <h1> tag is wrongly closed with </h2> instead of </h1>.
+        Error 5  (Line 8): Wrong nesting of <strong> and <em> (they are closed in the wrong order).
+        Error 6  (Line 8): The <p> tag is not closed with </p>.
+        Error 7  (Line 9): The second <h2> should be the closing tag </h2>.
+        Error 8  (Line 11): The first <li> item is not closed with </li>.
+        Error 9  (Line 14): The list is closed with </ol> but it was opened with <ul>.
+        Error 10 (Line 15): The href value is not inside quotation marks and is missing https://.
+        Error 11 (Line 16): The <img> tag is missing the alt attribute.
+        Error 12 (Line 17): The raw & sign must be escaped as &amp;, and (c) should be written as &copy;.
+        Error 13 (Line 18): Missing closing </html> tag after </body>.
+    -->
+
+    <!-- ===== Navigation (relative links between the two pages) ===== -->
+    <p><a href="lab1_ExerB.html">Home</a> | <a href="contact.html">Contact Us</a></p>
+
+    <!-- ===== Welcome heading ===== -->
+    <h1>Welcome to Campus Coding Club</h1>
+
+    <!-- ===== Meeting information (correctly nested strong + em) ===== -->
+    <p>We meet every <strong><em>Wednesday</em></strong> at Lab 3.</p>
+
+    <!-- ===== Our Activities (unordered list) ===== -->
+    <h2>Our Activities</h2>
+    <ul>
+        <li>Weekly coding sessions</li>
+        <li>Hackathon</li>
+        <li>Web design workshop</li>
+    </ul>
+
+    <!-- ===== University link (quoted href with https://) ===== -->
+    <p>Visit our university: <a href="https://www.umt.edu.my">UMT Website</a></p>
+
+    <!-- ===== Club image (with alt attribute) ===== -->
+    <img src="club.jpg" alt="Campus Coding Club members at a weekly coding session in Lab 3">
+
+    <!-- ===== Quote from the club advisor (blockquote) ===== -->
+    <h2>From Our Club Advisor</h2>
+    <blockquote>
+        <p>
+            &ldquo;Coding is a team sport. Learn together, fail together, and grow
+            together &mdash; that is the spirit of this club.&rdquo;
+        </p>
+    </blockquote>
+
+    <!-- ===== Footer (special characters &copy; and &amp;) ===== -->
+    <p>&copy; 2026 Campus Coding Club &amp; Friends</p>
+
+</body>
+</html>
