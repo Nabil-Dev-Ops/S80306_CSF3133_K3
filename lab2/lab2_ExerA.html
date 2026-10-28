@@ -3,6 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Faculty of Computer Science and Mathematics - Web Development Workshop 2026</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 
@@ -41,10 +47,10 @@
 
     <hr>
 
-    <!-- Section 2: Event Schedule Table (with border="1", <th>, colspan, and rowspan) -->
+    <!-- Section 2: Event Schedule Table -->
     <section id="schedule">
         <h2>Event Schedule</h2>
-        <table border="1">
+        <table>
             <tr>
                 <th>Time</th>
                 <th>Activity</th>
@@ -60,7 +66,6 @@
             <tr>
                 <td>09:00 AM - 10:30 AM</td>
                 <td>Keynote: Modern Web Technologies</td>
-                <!-- rowspan="2" used: Morning sessions share the same Computer Lab 1 venue -->
                 <td rowspan="2">Computer Lab 1</td>
                 <td>Dr. Muhammad Nabil</td>
             </tr>
@@ -71,7 +76,6 @@
             </tr>
             <tr>
                 <td>12:30 PM - 02:00 PM</td>
-                <!-- colspan="3" used: Lunch break spans Activity, Venue, and Person in Charge -->
                 <td colspan="3">Lunch Break &amp; Networking Session (Cafeteria)</td>
             </tr>
             <tr>
@@ -114,7 +118,7 @@
                 <input type="email" id="email" name="email" required>
             </p>
 
-            <!-- Radio buttons: Year of Study (shared name) -->
+            <!-- Radio buttons: Year of Study -->
             <p>
                 <label>Year of Study:</label><br>
                 <input type="radio" id="year1" name="year_of_study" value="1" required>
@@ -127,7 +131,7 @@
                 <label for="year4">Year 4</label>
             </p>
 
-            <!-- Checkboxes: Sessions to join (at least 3 choices) -->
+            <!-- Checkboxes: Sessions -->
             <p>
                 <label>Sessions you want to join:</label><br>
                 <input type="checkbox" id="session_keynote" name="sessions" value="keynote">
@@ -140,7 +144,7 @@
                 <label for="session_showcase">Project Showcase &amp; Closing Ceremony</label>
             </p>
 
-            <!-- Drop-down list: Programme / Faculty (at least 4 options) -->
+            <!-- Drop-down list -->
             <p>
                 <label for="programme">Programme / Faculty:</label><br>
                 <select id="programme" name="programme" required>

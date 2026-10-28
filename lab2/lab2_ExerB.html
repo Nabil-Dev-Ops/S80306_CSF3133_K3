@@ -3,24 +3,27 @@
 <head>
     <meta charset="utf-8">
     <title>Course Feedback</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 
     <!--
-    ===================================================================
     PART 1: LIST OF ERRORS IDENTIFIED AND CORRECTED (from given code):
-    -------------------------------------------------------------------
     Error 1 (Line 10): Incorrect closing tag </head> inside body instead of </header>.
     Error 2 (Line 20): Used <td>Rating</td> instead of header cell <th>Rating</th>.
     Error 3 (Line 26): Unclosed <tr> tag (missing </tr> before opening new <tr> on line 26).
-    Error 4 (Line 28): <td colspan="3"> on column with only 3 total columns makes total columns 4; changed to colspan="2" to correctly span Topic and Rating.
+    Error 4 (Line 28): colspan="3" on column with only 3 total columns makes total columns 4; changed to colspan="2" to correctly span Topic and Rating.
     Error 5 (Line 32): Unclosed <td> tag for "Semantic HTML" and missing closing </td> tag before <td>4.0</td>.
     Error 6 (Line 39-40): Label for="name" does not match input id="fullname" (changed input id to "name").
     Error 7 (Line 42, 44): Radio buttons have different names (name="good" and name="poor"), allowing multiple selections; grouped under same name="rating".
     Error 8 (Line 46-47): Label for="labs" does not match checkbox id="lab" (changed checkbox id to "labs").
     Error 9 (Line 49): Typo in closing tag </from> instead of </form>.
     Error 10 (Line 52): Missing semicolon in HTML entity &copy; (was &copy without semicolon).
-    ===================================================================
     -->
 
     <!-- Header Section -->
@@ -38,7 +41,7 @@
     <!-- Section 1: Feedback Summary Table -->
     <section id="results">
         <h2>Feedback Summary</h2>
-        <table border="1">
+        <table>
             <tr>
                 <th>Week</th>
                 <th>Topic</th>
@@ -58,7 +61,7 @@
                 <td>Semantic HTML</td>
                 <td>4.0</td>
             </tr>
-            <!-- Part 2 Extension: Week 4 & 5 with rowspan="2" on Topic -->
+            <!-- Part 2 Extension: Week 4 and 5 with rowspan="2" on Topic -->
             <tr>
                 <td>4</td>
                 <td rowspan="2">Mini Project</td>
@@ -93,7 +96,7 @@
                 <input type="email" id="email" name="email">
             </p>
 
-            <!-- Grouped Radio Buttons (same name="rating", added "Average" option) -->
+            <!-- Grouped Radio Buttons (same name="rating", added Average option) -->
             <p>
                 <label>Overall rating:</label><br>
                 <input type="radio" id="good" name="rating" value="good">
@@ -121,7 +124,7 @@
                 <label for="labs">I attended all labs</label>
             </p>
 
-            <!-- Extension: Select dropdown for Section/Group (at least 3 options) -->
+            <!-- Extension: Select dropdown for Section/Group -->
             <p>
                 <label for="group">Section / Group:</label><br>
                 <select id="group" name="group">
