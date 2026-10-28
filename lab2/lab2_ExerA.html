@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Faculty of Computer Science and Mathematics - Web Development Workshop 2026</title>
+</head>
+<body>
+
+    <!-- Header Section: Event Title and Tagline -->
+    <header>
+        <h1>Web Development Workshop 2026</h1>
+        <p>A One-Day Hands-on Web Bootcamp organised by Faculty of Computer Science and Mathematics</p>
+    </header>
+
+    <!-- Navigation Section: Internal Jump Links -->
+    <nav>
+        <a href="#about">About the Event</a> |
+        <a href="#schedule">Event Schedule</a> |
+        <a href="#register">Registration</a>
+    </nav>
+
+    <hr>
+
+    <!-- Section 1: About the Event with 2 Articles -->
+    <section id="about">
+        <h2>About the Event</h2>
+        <p>Join us for an intensive one-day hands-on workshop focused on HTML5, semantic web markup, and modern web application fundamentals.</p>
+
+        <!-- Article 1: Keynote Speaker -->
+        <article>
+            <h3>Keynote Speaker: Dr. Muhammad Nabil</h3>
+            <p>Dr. Muhammad Nabil is a Senior Lecturer in Software Engineering with over 10 years of experience in full-stack web architectures and open-source systems.</p>
+        </article>
+
+        <!-- Article 2: Hands-on Activity -->
+        <article>
+            <h3>Hands-on Activity: Speed Coding Challenge</h3>
+            <p>Participants will team up in pairs to build responsive, accessible web pages from scratch within 90 minutes. Attractive prizes await the top three teams!</p>
+        </article>
+    </section>
+
+    <hr>
+
+    <!-- Section 2: Event Schedule Table (with border="1", <th>, colspan, and rowspan) -->
+    <section id="schedule">
+        <h2>Event Schedule</h2>
+        <table border="1">
+            <tr>
+                <th>Time</th>
+                <th>Activity</th>
+                <th>Venue</th>
+                <th>Person in Charge</th>
+            </tr>
+            <tr>
+                <td>08:30 AM - 09:00 AM</td>
+                <td>Registration &amp; Welcome Breakfast</td>
+                <td>Foyer Block A</td>
+                <td>Secretariat Team</td>
+            </tr>
+            <tr>
+                <td>09:00 AM - 10:30 AM</td>
+                <td>Keynote: Modern Web Technologies</td>
+                <!-- rowspan="2" used: Morning sessions share the same Computer Lab 1 venue -->
+                <td rowspan="2">Computer Lab 1</td>
+                <td>Dr. Muhammad Nabil</td>
+            </tr>
+            <tr>
+                <td>10:30 AM - 12:30 PM</td>
+                <td>Hands-on Session: HTML5 &amp; Semantic Web</td>
+                <td>Mr. Hafiz</td>
+            </tr>
+            <tr>
+                <td>12:30 PM - 02:00 PM</td>
+                <!-- colspan="3" used: Lunch break spans Activity, Venue, and Person in Charge -->
+                <td colspan="3">Lunch Break &amp; Networking Session (Cafeteria)</td>
+            </tr>
+            <tr>
+                <td>02:00 PM - 04:00 PM</td>
+                <td>Speed Coding Challenge</td>
+                <td>Main Hall</td>
+                <td>Madam Sarah</td>
+            </tr>
+            <tr>
+                <td>04:00 PM - 05:00 PM</td>
+                <td>Project Showcase &amp; Closing Ceremony</td>
+                <td>Auditorium 2</td>
+                <td>Muhammad Nabil (Director)</td>
+            </tr>
+        </table>
+    </section>
+
+    <hr>
+
+    <!-- Section 3: Registration Form -->
+    <section id="register">
+        <h2>Participant Registration</h2>
+        <form action="register.html" method="post">
+
+            <!-- Text input: Full Name -->
+            <p>
+                <label for="fullname">Full Name:</label><br>
+                <input type="text" id="fullname" name="fullname" required>
+            </p>
+
+            <!-- Text input: Matric Number -->
+            <p>
+                <label for="matric">Matric Number:</label><br>
+                <input type="text" id="matric" name="matric" required>
+            </p>
+
+            <!-- Text input: Email -->
+            <p>
+                <label for="email">E-mail Address:</label><br>
+                <input type="email" id="email" name="email" required>
+            </p>
+
+            <!-- Radio buttons: Year of Study (shared name) -->
+            <p>
+                <label>Year of Study:</label><br>
+                <input type="radio" id="year1" name="year_of_study" value="1" required>
+                <label for="year1">Year 1</label>
+                <input type="radio" id="year2" name="year_of_study" value="2">
+                <label for="year2">Year 2</label>
+                <input type="radio" id="year3" name="year_of_study" value="3">
+                <label for="year3">Year 3</label>
+                <input type="radio" id="year4" name="year_of_study" value="4">
+                <label for="year4">Year 4</label>
+            </p>
+
+            <!-- Checkboxes: Sessions to join (at least 3 choices) -->
+            <p>
+                <label>Sessions you want to join:</label><br>
+                <input type="checkbox" id="session_keynote" name="sessions" value="keynote">
+                <label for="session_keynote">Keynote: Modern Web Technologies</label><br>
+                <input type="checkbox" id="session_html" name="sessions" value="html5">
+                <label for="session_html">Hands-on Session: HTML5 &amp; Semantic Web</label><br>
+                <input type="checkbox" id="session_challenge" name="sessions" value="challenge">
+                <label for="session_challenge">Speed Coding Challenge</label><br>
+                <input type="checkbox" id="session_showcase" name="sessions" value="showcase">
+                <label for="session_showcase">Project Showcase &amp; Closing Ceremony</label>
+            </p>
+
+            <!-- Drop-down list: Programme / Faculty (at least 4 options) -->
+            <p>
+                <label for="programme">Programme / Faculty:</label><br>
+                <select id="programme" name="programme" required>
+                    <option value="">-- Select Your Programme --</option>
+                    <option value="cs">Bachelor of Computer Science (Software Engineering)</option>
+                    <option value="net">Bachelor of Computer Science (Computer Network)</option>
+                    <option value="it">Bachelor of Information Technology</option>
+                    <option value="math">Bachelor of Science (Mathematics and Computing)</option>
+                </select>
+            </p>
+
+            <!-- Submit Button -->
+            <p>
+                <input type="submit" value="Register Now">
+            </p>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Footer: Organiser name and copyright line -->
+    <footer>
+        <p>Organised by Faculty of Computer Science and Mathematics</p>
+        <p>&copy; 2026 CSF3133 Web Development. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

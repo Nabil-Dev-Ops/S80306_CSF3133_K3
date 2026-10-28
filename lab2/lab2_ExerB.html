@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Course Feedback</title>
+</head>
+<body>
+
+    <!--
+    ===================================================================
+    PART 1: LIST OF ERRORS IDENTIFIED AND CORRECTED (from given code):
+    -------------------------------------------------------------------
+    Error 1 (Line 10): Incorrect closing tag </head> inside body instead of </header>.
+    Error 2 (Line 20): Used <td>Rating</td> instead of header cell <th>Rating</th>.
+    Error 3 (Line 26): Unclosed <tr> tag (missing </tr> before opening new <tr> on line 26).
+    Error 4 (Line 28): <td colspan="3"> on column with only 3 total columns makes total columns 4; changed to colspan="2" to correctly span Topic and Rating.
+    Error 5 (Line 32): Unclosed <td> tag for "Semantic HTML" and missing closing </td> tag before <td>4.0</td>.
+    Error 6 (Line 39-40): Label for="name" does not match input id="fullname" (changed input id to "name").
+    Error 7 (Line 42, 44): Radio buttons have different names (name="good" and name="poor"), allowing multiple selections; grouped under same name="rating".
+    Error 8 (Line 46-47): Label for="labs" does not match checkbox id="lab" (changed checkbox id to "labs").
+    Error 9 (Line 49): Typo in closing tag </from> instead of </form>.
+    Error 10 (Line 52): Missing semicolon in HTML entity &copy; (was &copy without semicolon).
+    ===================================================================
+    -->
+
+    <!-- Header Section -->
+    <header>
+        <h1>CSF3133 Course Feedback</h1>
+    </header>
+
+    <!-- Navigation Bar: internal links including the new Student Comments section -->
+    <nav>
+        <a href="#results">Results</a> |
+        <a href="#form">Feedback Form</a> |
+        <a href="#comments">Student Comments</a>
+    </nav>
+
+    <!-- Section 1: Feedback Summary Table -->
+    <section id="results">
+        <h2>Feedback Summary</h2>
+        <table border="1">
+            <tr>
+                <th>Week</th>
+                <th>Topic</th>
+                <th>Rating</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Introduction to HTML</td>
+                <td>4.5</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td colspan="2">Tables and Forms (Rating Pending)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Semantic HTML</td>
+                <td>4.0</td>
+            </tr>
+            <!-- Part 2 Extension: Week 4 & 5 with rowspan="2" on Topic -->
+            <tr>
+                <td>4</td>
+                <td rowspan="2">Mini Project</td>
+                <td>4.8</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>4.7</td>
+            </tr>
+            <!-- Part 2 Extension: Final row with colspan="2" for Average Rating -->
+            <tr>
+                <td colspan="2"><strong>Average Rating</strong></td>
+                <td><strong>4.5</strong></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Section 2: Feedback Form -->
+    <section id="form">
+        <h2>Give Your Feedback</h2>
+        <form action="submit_feedback.php" method="post">
+
+            <!-- Name input with matching label -->
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </p>
+
+            <!-- Extension: E-mail input with matching label -->
+            <p>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email">
+            </p>
+
+            <!-- Grouped Radio Buttons (same name="rating", added "Average" option) -->
+            <p>
+                <label>Overall rating:</label><br>
+                <input type="radio" id="good" name="rating" value="good">
+                <label for="good">Good</label>
+                <input type="radio" id="average" name="rating" value="average">
+                <label for="average">Average</label>
+                <input type="radio" id="poor" name="rating" value="poor">
+                <label for="poor">Poor</label>
+            </p>
+
+            <!-- Extension: Group of at least 3 checkboxes -->
+            <p>
+                <label>Topics I want more practice on:</label><br>
+                <input type="checkbox" id="topic_tables" name="practice_topics" value="tables">
+                <label for="topic_tables">Tables &amp; Cell Merging</label><br>
+                <input type="checkbox" id="topic_forms" name="practice_topics" value="forms">
+                <label for="topic_forms">Forms &amp; Input Validation</label><br>
+                <input type="checkbox" id="topic_semantic" name="practice_topics" value="semantic">
+                <label for="topic_semantic">Semantic HTML Structure</label>
+            </p>
+
+            <!-- Attendance Checkbox with matching label -->
+            <p>
+                <input type="checkbox" id="labs" name="lab" value="yes">
+                <label for="labs">I attended all labs</label>
+            </p>
+
+            <!-- Extension: Select dropdown for Section/Group (at least 3 options) -->
+            <p>
+                <label for="group">Section / Group:</label><br>
+                <select id="group" name="group">
+                    <option value="">-- Select Group --</option>
+                    <option value="K1">Group K1</option>
+                    <option value="K2">Group K2</option>
+                    <option value="K3">Group K3</option>
+                </select>
+            </p>
+
+            <!-- Submit Button -->
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </section>
+
+    <!-- Part 2 Extension: Section 3 - Student Comments -->
+    <section id="comments">
+        <h2>Student Comments</h2>
+
+        <!-- Article 1 -->
+        <article>
+            <h3>Ahmad Albab</h3>
+            <p>The hands-on exercises on HTML tables and forms were very helpful. The explanation of rowspan and colspan made cell merging much clearer.</p>
+        </article>
+
+        <!-- Article 2 -->
+        <article>
+            <h3>Siti Nurhaliza</h3>
+            <p>I really enjoyed learning semantic HTML. It helped me understand how to structure modern web pages cleanly and improve accessibility.</p>
+        </article>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Copyright &copy; 2026 CSF3133</p>
+    </footer>
+
+</body>
+</html>
