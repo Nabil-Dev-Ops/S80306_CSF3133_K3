@@ -145,10 +145,14 @@
             <input type="number" id="child" name="child" min="0" step="1" value="0">
         </p>
 
-        <!-- Error 10 fixed: min="1" max="5" (was reversed) -->
+        <!-- Error 10 fixed: min="1" max="5" (was reversed)
+             Extension: the <output name="rateout"> shows the live rating value
+             while the slider is dragged. It is updated by showRate(this.value). -->
         <p>
             <label for="rating">Rate our service (1 = poor, 5 = excellent):</label>
-            <input type="range" id="rating" name="rating" min="1" max="5" step="1" value="5">
+            <input type="range" id="rating" name="rating" min="1" max="5" step="1" value="5"
+                   oninput="showRate(this.value)">
+            <output name="rateout" for="rating">5</output>
         </p>
 
         <!-- Error 11 fixed: for="adult child" (the ids that really exist) -->
@@ -210,5 +214,12 @@
     </p>
 </div>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a55191ea9ac56be8',t:'MTc5Mzc3MzgyNQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a55191ea9ac56be8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<!-- Helper so the rating slider can print its own value in the
+     <output name="rateout"> above. JavaScript only, no CSS. -->
+<script>
+    function showRate(v) {
+        document.querySelector('output[name="rateout"]').value = v;
+    }
+</script>
+</body>
 </html>

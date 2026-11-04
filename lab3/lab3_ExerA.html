@@ -111,11 +111,17 @@
                 <input type="color" id="icing" name="icing" value="#ffcc00">
             </p>
 
-            <!-- Sweetness: range slider min="1" max="5" step="1" -->
+            <!-- Sweetness: range slider min="1" max="5" step="1"
+                 The <output name="sweetout"> shows the live value while dragging.
+                 It is updated by the form's oninput attribute, which calls
+                 showSweet(this.value). Keeping <output> OUTSIDE the <label>
+                 avoids the "output descendant of label" validation error. -->
             <p>
                 <label for="sweetness">Sweetness level (1 = not sweet, 5 = very sweet):</label><br>
                 <input type="range" id="sweetness" name="sweetness"
-                       min="1" max="5" step="1" value="3">
+                       min="1" max="5" step="1" value="3"
+                       oninput="showSweet(this.value)">
+                <output name="sweetout" for="sweetness">3</output>
             </p>
 
             <!-- ============================================================
@@ -176,7 +182,14 @@
     <p>&copy; 2026 CampusBake&reg; &bull; CSF3133 Web Development &bull; Group K3</p>
 </div>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a55192dbe9dd6be8',t:'MTc5Mzc3Mzg2NA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a55192dbe9dd6be8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<!-- Small helper so the sweetness slider can print its own value in the
+     <output name="sweetout"> above. This is JavaScript, not CSS. -->
+<script>
+    function showSweet(v) {
+        document.querySelector('output[name="sweetout"]').value = v;
+    }
+</script>
+</body>
 </html>
 
 <!-- ============================================================
@@ -198,4 +211,7 @@
 
      3) The Price Calculator output updates live while typing, e.g.
         2 cupcakes + 1 slice shows RM 11, and 0 + 0 shows RM 0.
+
+     4) The sweetness slider prints its current value in the <output>
+        next to it while dragging (3 by default, 1-5 range).
      ============================================================ -->
