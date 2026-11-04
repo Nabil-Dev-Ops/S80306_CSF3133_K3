@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ticket Booking | lab3_ExerB</title>
+</head>
+<body>
+
+<!-- ============================================================
+     PART 1 : LIST OF ERRORS FOUND IN THE GIVEN CODE
+     (line numbers refer to the original 55-line code from the lab sheet)
+
+     Error 1  (Line 1)   <!DOCTYPE> is incomplete. It must be <!DOCTYPE html>,
+                         otherwise the page is not parsed as HTML5.
+
+     Error 2  (Line 9)   Tags are closed in the wrong order:
+                         <h1>e-Ticket <span>Your Campus Cinema</h1></span>
+                         The <span> is opened inside <h1> but closed after it.
+                         Fix: close the span first  ->  ... </span></h1>
+
+     Error 3  (Line 11)  The page section <span id="content"> is an INLINE element
+                         being used as a container for <h2>, <p> and <form>
+                         (all block elements). Invalid nesting.
+                         Fix: use <div id="content"> ... </div> (its closing tag on
+                         line 36 must change too).
+
+     Error 4  (Line 13)  A raw "<" is written as text: "tickets < RM10".
+                         The browser reads it as the start of a tag.
+                         Fix: use the entity &lt;
+
+     Error 5  (Line 14)  oninput="total.value = adult.value + child.value" uses
+                         + on two text values, so "2" + "3" becomes "23" instead
+                         of 5. Fix: convert to numbers, e.g. Number(adult.value).
+
+     Error 6  (Line 18)  type="emial" is a typo. The browser ignores the unknown
+                         type, falls back to text, and the e-mail is never
+                         validated. Fix: type="email" (and add required).
+
+     Error 7  (Line 22)  list="movies" does not match the datalist id, which is
+                         "movielist". The association fails, so the movie
+                         suggestions never appear. Fix: list="movielist".
+
+     Error 8  (Lines 23-26) <option> elements are never closed, and only 2 movies
+                         are offered. Fix: <option value="..."></option>.
+
+     Error 9  (Lines 28 & 30) The number inputs have no min attribute, so a
+                         negative number of tickets can be booked.
+                         Fix: add min="0" step="1".
+
+     Error 10 (Line 32)  The range slider has min="5" max="1" (reversed), so the
+                         slider behaves strangely. Fix: min="1" max="5".
+
+     Error 11 (Line 33)  <output for="adult kid"> refers to an id that does not
+                         exist; the child input's id is "child".
+                         Fix: for="adult child".
+
+     Error 12 (Line 38)  &Copy; is the wrong case. Entity names are
+                         case-sensitive. Fix: &copy;
+
+     Error 13 (Lines 41, 54-55) The document is closed twice: line 41 already has
+                         </body></html>, then lines 54-55 repeat </body></html>.
+                         Fix: only ONE closing pair at the very end.
+     ============================================================ -->
+
+<!-- ========== HEADER ========== -->
+<!-- Error 2 fixed: <span> now closes before </h1> -->
+<div id="header">
+    <h1>e-Ticket <span>Your Campus Cinema</span></h1>
+</div>
+
+<!-- ========== CONTENT (Error 3 fixed: was <span>, now <div>) ========== -->
+<div id="content">
+    <h2>Book Your Ticket</h2>
+
+    <!-- Error 4 fixed: "<" is written as &lt;  ("&amp;" is the correct way
+         to display a literal ampersand) -->
+    <p>Promotion: tickets &lt; RM10 for students &amp; staff!</p>
+
+    <!--
+        Errors 5, 9 and 11 fixed in this form:
+        - The oninput attribute now does real arithmetic with Number(), so
+          2 adults + 3 children = 5 tickets (not "23").
+        - A second <output name="price"> shows the money total:
+          adult RM 12, child RM 8  ->  2 adults + 3 children = RM 48.
+        - "|| 0" keeps the result at 0 when a box is emptied instead of NaN.
+    -->
+    <form action="booking.php"
+          oninput="total.value = Number(adult.value || 0) + Number(child.value || 0);
+                   price.value = (Number(adult.value || 0) * 12) + (Number(child.value || 0) * 8)">
+
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your name" required autofocus>
+        </p>
+
+        <!-- Error 6 fixed: type="email" + required, so "myemail" is rejected -->
+        <p>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email"
+                   placeholder="e.g. you@student.umt.edu.my" required>
+        </p>
+
+        <!-- EXTENSION (Part 2, item 6): phone number with type="tel",
+             placeholder and required -->
+        <p>
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="e.g. 013-9876543" required>
+        </p>
+
+        <p>
+            <label for="date">Show date:</label>
+            <input type="date" id="date" name="date">
+        </p>
+
+        <!-- EXTENSION (Part 2, item 6): show time input -->
+        <p>
+            <label for="showtime">Show time:</label>
+            <input type="time" id="showtime" name="showtime">
+        </p>
+
+        <!-- Errors 7 and 8 fixed: list="movielist" now matches the datalist id,
+             each <option> is properly closed, and more movies are offered -->
+        <p>
+            <label for="movie">Movie:</label>
+            <input id="movie" name="movie" list="movielist" placeholder="Type or choose a movie">
+            <datalist id="movielist">
+                <option value="Space Rangers"></option>
+                <option value="Kampung Comedy"></option>
+                <option value="Hujan Di Tengahari"></option>
+                <option value="The Last Kuih"></option>
+            </datalist>
+        </p>
+
+        <!-- Error 9 fixed: min="0" step="1" so tickets cannot go negative -->
+        <p>
+            <label for="adult">Adult tickets (RM 12 each):</label>
+            <input type="number" id="adult" name="adult" min="0" step="1" value="0">
+        </p>
+
+        <p>
+            <label for="child">Child tickets (RM 8 each):</label>
+            <input type="number" id="child" name="child" min="0" step="1" value="0">
+        </p>
+
+        <!-- Error 10 fixed: min="1" max="5" (was reversed) -->
+        <p>
+            <label for="rating">Rate our service (1 = poor, 5 = excellent):</label>
+            <input type="range" id="rating" name="rating" min="1" max="5" step="1" value="5">
+        </p>
+
+        <!-- Error 11 fixed: for="adult child" (the ids that really exist) -->
+        <p>
+            Total tickets: <output name="total" for="adult child">0</output>
+        </p>
+
+        <!-- EXTENSION (Part 2, item 7): total price output -->
+        <p>
+            <strong>Total price: RM <output name="price" for="adult child">0</output></strong>
+        </p>
+
+        <p>
+            <input type="submit" value="Book Now">
+        </p>
+    </form>
+</div><!-- /#content -->
+
+<!-- ============================================================
+     EXTENSION (Part 2, items 5 & 9) : SIDEBAR "Now Showing"
+     Each item uses <strong> for the title, <span> for the age rating
+     and <a> for the trailer link.
+     ============================================================ -->
+<div id="sidebar">
+    <h2>Now Showing</h2>
+    <ul>
+        <li>
+            <strong>Space Rangers</strong> &mdash; <span>(PG13)</span> &mdash;
+            <a href="trailer_space_rangers.html">Watch trailer</a>
+        </li>
+        <li>
+            <strong>Kampung Comedy</strong> &mdash; <span>(U)</span> &mdash;
+            <a href="trailer_kampung_comedy.html">Watch trailer</a>
+        </li>
+        <li>
+            <strong>Hujan Di Tengahari</strong> &mdash; <span>(18)</span> &mdash;
+            <a href="trailer_hujan.html">Watch trailer</a>
+        </li>
+        <li>
+            <strong>The Last Kuih</strong> &mdash; <span>(PG13)</span> &mdash;
+            <a href="trailer_last_kuih.html">Watch trailer</a>
+        </li>
+    </ul>
+</div><!-- /#sidebar -->
+
+<!-- ============================================================
+     FOOTER
+     Error 12 fixed (&Copy; is not a valid entity - names are case
+     sensitive), and Extension item 8 added: the full footer text
+     "e-Ticket® - Campus Cinema < RM10 every Tuesday" built with
+     &reg; , &lt; and (in the copyright line) &amp;
+     ============================================================ -->
+<div id="footer">
+    <p>
+        e-Ticket&reg; &ndash; Campus Cinema &lt; RM10 every Tuesday
+    </p>
+    <p>
+        &copy; 2026 CineKampus. All rights reserved. &bull; Shows &amp; times may change without notice.
+    </p>
+</div>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a55191ea9ac56be8',t:'MTc5Mzc3MzgyNQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a55191ea9ac56be8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

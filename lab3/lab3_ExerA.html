@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CampusBake &ndash; Online Pre-Order | lab3_ExerA</title>
+</head>
+<body>
+
+<!-- ============================================================
+     QUESTION 1 : PAGE STRUCTURE
+     The whole page is organised with FIVE <div> elements:
+     #header, #nav, #content, #sidebar, #footer
+     ============================================================ -->
+
+<!-- ========== SECTION 1: HEADER ========== -->
+<!-- Q2: bakery name in <h1>, with a <span> slogan INSIDE the <h1> -->
+<div id="header">
+    <h1>CampusBake&reg; <span>&mdash; fresh from the oven, every single morning!</span></h1>
+</div>
+
+<!-- ========== SECTION 2: NAVIGATION ========== -->
+<!-- Q2: at least three INLINE links (<a>) separated by " | " -->
+<div id="nav">
+    <a href="#order">Place an Order</a> |
+    <a href="#pricelist">Price List</a> |
+    <a href="#about">About Us</a> |
+    <a href="#contact">Contact</a>
+</div>
+
+<!-- ========== SECTION 3: CONTENT ========== -->
+<div id="content">
+
+    <!-- Q3: at least three different INLINE elements inside one paragraph
+             (strong, em, span, a) plus BLOCK elements (h2, p, ul, div) -->
+    <h2 id="about">Welcome to CampusBake&reg;</h2>
+    <p>
+        We are a <em>student-run</em> bakery <strong>right here on campus</strong>, so your order is
+        baked <span>on the very same morning</span> you collect it. Have a look at our
+        <a href="#pricelist">price list</a> first &mdash; orders above 10 pieces come with a free drink.
+    </p>
+
+    <ul>
+        <li>Cupcakes &mdash; RM 3.00 each</li>
+        <li>Cake slices &mdash; RM 5.00 each</li>
+        <li>Free drink for orders of more than 10 pieces</li>
+    </ul>
+
+    <!-- Q5 + Q6: the ORDER FORM lives inside its own <div> -->
+    <div id="order">
+        <h2>Place Your Pre-Order</h2>
+
+        <!--
+            Q6: the form's oninput attribute recalculates the total every time
+                any field changes.  Cupcake = RM 3.00, Cake slice = RM 5.00.
+                Number(...) forces arithmetic instead of text joining,
+                and "|| 0" stops an empty box showing NaN.
+        -->
+        <form action="#"
+              oninput="total.value = (Number(cupcakes.value || 0) * 3) + (Number(slices.value || 0) * 5)">
+
+            <!-- Customer name: placeholder + required + autofocus -->
+            <p>
+                <label for="name">Customer name:</label><br>
+                <input type="text" id="name" name="name"
+                       placeholder="e.g. Nurul Aisyah" required autofocus>
+            </p>
+
+            <!-- Phone: type="tel" and required -->
+            <p>
+                <label for="phone">Phone number:</label><br>
+                <input type="tel" id="phone" name="phone"
+                       placeholder="e.g. 012-3456789" required>
+            </p>
+
+            <!-- E-mail: type="email" and required -->
+            <p>
+                <label for="email">E-mail:</label><br>
+                <input type="email" id="email" name="email"
+                       placeholder="e.g. aisyah@student.umt.edu.my" required>
+            </p>
+
+            <!-- Pick-up date and time -->
+            <p>
+                <label for="pickupdate">Pick-up date:</label><br>
+                <input type="date" id="pickupdate" name="pickupdate">
+            </p>
+
+            <p>
+                <label for="pickuptime">Pick-up time:</label><br>
+                <input type="time" id="pickuptime" name="pickuptime">
+            </p>
+
+            <!-- Flavour: text input linked to a <datalist> with 5 flavours -->
+            <p>
+                <label for="flavour">Flavour (type or choose):</label><br>
+                <input type="text" id="flavour" name="flavour" list="flavours"
+                       placeholder="e.g. Pandan">
+                <datalist id="flavours">
+                    <option value="Vanilla"></option>
+                    <option value="Chocolate"></option>
+                    <option value="Red Velvet"></option>
+                    <option value="Pandan"></option>
+                    <option value="Strawberry"></option>
+                </datalist>
+            </p>
+
+            <!-- Icing colour: type="color" -->
+            <p>
+                <label for="icing">Icing colour:</label><br>
+                <input type="color" id="icing" name="icing" value="#ffcc00">
+            </p>
+
+            <!-- Sweetness: range slider min="1" max="5" step="1" -->
+            <p>
+                <label for="sweetness">Sweetness level (1 = not sweet, 5 = very sweet):</label><br>
+                <input type="range" id="sweetness" name="sweetness"
+                       min="1" max="5" step="1" value="3">
+            </p>
+
+            <!-- ============================================================
+                 QUESTION 6 : PRICE CALCULATOR using the <output> element
+                 ============================================================ -->
+            <h3>Price Calculator</h3>
+            <p>
+                <label for="cupcakes">Cupcakes (RM 3.00 each):</label>
+                <input type="number" id="cupcakes" name="cupcakes"
+                       min="0" value="0" step="1">
+            </p>
+            <p>
+                <label for="slices">Cake slices (RM 5.00 each):</label>
+                <input type="number" id="slices" name="slices"
+                       min="0" value="0" step="1">
+            </p>
+            <p>
+                <!-- name="total" lets the form's oninput reach it as "total.value";
+                     for="cupcakes slices" lists the inputs it is calculated from -->
+                <strong>Total price: RM <output name="total" for="cupcakes slices">0</output></strong>
+            </p>
+
+            <p>
+                <input type="submit" value="Submit Pre-Order">
+            </p>
+        </form>
+    </div><!-- /#order -->
+</div><!-- /#content -->
+
+<!-- ========== SECTION 4: SIDEBAR (PRICE LIST + ENTITIES) ========== -->
+<!-- Q4: at least four different entities in the page: &reg; &gt; &nbsp; &amp; &copy;
+         (also used: &mdash; &bull;) -->
+<div id="sidebar">
+    <h2 id="pricelist">Price List</h2>
+    <ul>
+        <li>Vanilla cupcake&nbsp;&nbsp;&mdash;&nbsp;&nbsp;RM 3.00</li>
+        <li>Chocolate cupcake&nbsp;&nbsp;&mdash;&nbsp;&nbsp;RM 3.00</li>
+        <li>Cheesecake slice&nbsp;&nbsp;&mdash;&nbsp;&nbsp;RM 5.00</li>
+        <li>Chocolate cake slice&nbsp;&nbsp;&mdash;&nbsp;&nbsp;RM 5.00</li>
+    </ul>
+
+    <p>Orders &gt; 10 pieces get a free drink!</p>
+
+    <p>
+        CampusBake&reg; uses only halal ingredients &amp; no artificial colouring.
+    </p>
+
+    <h3 id="contact">Contact</h3>
+    <p>
+        Cafeteria Block B<br>
+        Faculty of Computer Science &amp; Mathematics<br>
+        Phone: 09-668&nbsp;0000
+    </p>
+</div><!-- /#sidebar -->
+
+<!-- ========== SECTION 5: FOOTER ========== -->
+<div id="footer">
+    <p>&copy; 2026 CampusBake&reg; &bull; CSF3133 Web Development &bull; Group K3</p>
+</div>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a55192dbe9dd6be8',t:'MTc5Mzc3Mzg2NA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a55192dbe9dd6be8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+<!-- ============================================================
+     TESTING OBSERVATIONS (Question 7 of the instructions)
+
+     1) Clicking Submit with ALL fields empty:
+        The browser blocks submission and shows a bubble on the first
+        invalid field, "Please fill out this field", on the Customer name
+        box (it has required + autofocus, so it is focused first). The page
+        never navigates. Because the fields are validated in document order,
+        the name field complains first, then phone, then e-mail.
+
+     2) Typing "myemail" in the e-mail field and submitting again:
+        The other required fields are still empty, but once they are filled
+        the browser refuses "myemail" and shows a message such as
+        "Please include an '@' in the email address. 'myemail' is missing an
+        '@'." Nothing is submitted, because type="email" validates the
+        format in the browser BEFORE the form is sent.
+
+     3) The Price Calculator output updates live while typing, e.g.
+        2 cupcakes + 1 slice shows RM 11, and 0 + 0 shows RM 0.
+     ============================================================ -->
