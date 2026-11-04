@@ -3,87 +3,792 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S80306 | CSF3133 Labs</title>
+    <title>S80306 | CSF3133 Web Development Portfolio</title>
+    <meta name="description" content="Lab portfolio for CSF3133 Web Development by Muhammad Nabil Bin Taha (S80306), Group K3.">
     <style>
+        :root {
+            --bg: #0b1120;
+            --bg-2: #0f172a;
+            --panel: #1e293b;
+            --panel-2: #172033;
+            --line: #334155;
+            --line-soft: #263349;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --muted-2: #64748b;
+            --accent: #38bdf8;
+            --accent-2: #60a5fa;
+            --accent-3: #818cf8;
+            --green: #34d399;
+            --radius: 14px;
+            --shadow: 0 18px 40px -18px rgba(2, 8, 23, 0.95);
+        }
+
         * { box-sizing: border-box; }
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #334155; }
-        h1 { margin: 0 0 10px; color: #38bdf8; font-size: 2.2rem; }
-        p.subtitle { color: #94a3b8; font-size: 1.1rem; margin: 0; }
-        .badge { display: inline-block; margin: 12px 4px 0; padding: 4px 12px; background: #1e293b; border: 1px solid #475569; border-radius: 999px; font-size: 0.85rem; color: #38bdf8; font-weight: bold; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-        .card { background: #1e293b; border-radius: 12px; padding: 24px; border: 1px solid #334155; }
-        .card h2 { margin-top: 0; color: #60a5fa; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; }
-        .card p.desc { color: #94a3b8; font-size: 0.9rem; margin-top: 4px; margin-bottom: 16px; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        li { margin-bottom: 10px; }
-        a { display: block; padding: 10px 14px; background: #0f172a; color: #e2e8f0; text-decoration: none; border-radius: 8px; border: 1px solid #334155; transition: all 0.2s; }
-        a:hover { background: #2563eb; color: #fff; border-color: #3b82f6; transform: translateX(4px); }
-        .filename { display: block; font-size: 0.78rem; color: #64748b; margin-top: 2px; }
-        a:hover .filename { color: #cbd5e1; }
-        .empty { color: #64748b; font-style: italic; }
-        footer { margin-top: 50px; text-align: center; color: #64748b; font-size: 0.9rem; border-top: 1px solid #334155; padding-top: 20px; }
-        footer a { color: #38bdf8; text-decoration: none; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- ambient background ---------- */
+        .glow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(680px 420px at 12% -8%, rgba(56, 189, 248, 0.16), transparent 65%),
+                radial-gradient(620px 420px at 88% 4%, rgba(129, 140, 248, 0.14), transparent 65%),
+                radial-gradient(700px 500px at 50% 110%, rgba(56, 189, 248, 0.07), transparent 70%);
+        }
+
+        .wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 0 20px 72px; }
+
+        /* ---------- top bar ---------- */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 18px 0;
+        }
+
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.01em; }
+        .brand .dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18), 0 0 18px rgba(56, 189, 248, 0.85);
+        }
+        .brand small { color: var(--muted-2); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+
+        .topnav { display: flex; gap: 6px; flex-wrap: wrap; }
+        .topnav a {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 999px;
+            border: 1px solid var(--line-soft);
+            background: rgba(30, 41, 59, 0.6);
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.18s, border-color 0.18s, background 0.18s, transform 0.18s;
+        }
+        .topnav a:hover { color: #fff; border-color: var(--accent); background: rgba(37, 99, 235, 0.28); transform: translateY(-1px); }
+
+        /* ---------- hero ---------- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin: 18px 0 46px;
+            padding: 48px 40px 42px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background:
+                linear-gradient(150deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.92)),
+                var(--panel);
+            box-shadow: var(--shadow);
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: radial-gradient(circle at 78% 18%, #000 0%, transparent 72%);
+            -webkit-mask-image: radial-gradient(circle at 78% 18%, #000 0%, transparent 72%);
+            pointer-events: none;
+        }
+        .hero > * { position: relative; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--green);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 10px var(--green);
+        }
+
+        .hero h1 {
+            margin: 20px 0 12px;
+            font-size: clamp(2rem, 4.4vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 .grad {
+            background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 45%, var(--accent-3) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p.lead {
+            margin: 0 0 26px;
+            max-width: 60ch;
+            color: var(--muted);
+            font-size: 1.03rem;
+        }
+
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .badge {
+            display: inline-block;
+            padding: 5px 13px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: var(--panel-2);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        /* ---------- stat strip ---------- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+            margin-top: 32px;
+            padding-top: 26px;
+            border-top: 1px solid var(--line-soft);
+        }
+        .stat .num {
+            font-size: 1.9rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .stat .num span { color: var(--accent); }
+        .stat .lbl {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted-2);
+            font-weight: 700;
+        }
+
+        /* ---------- section head ---------- */
+        .sec-head { margin: 0 0 22px; }
+        .sec-head h2 {
+            margin: 0 0 6px;
+            font-size: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        .sec-head p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+        /* ---------- lab blocks ---------- */
+        .lab {
+            margin-bottom: 30px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(23, 32, 51, 0.92));
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .lab-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--line-soft);
+            background: rgba(15, 23, 42, 0.55);
+        }
+        .lab-num {
+            flex: 0 0 auto;
+            width: 46px; height: 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #04121f;
+            background: linear-gradient(140deg, var(--accent), var(--accent-3));
+            box-shadow: 0 10px 22px -10px rgba(56, 189, 248, 0.95);
+        }
+        .lab-title { flex: 1 1 240px; }
+        .lab-title h2 { margin: 0; font-size: 1.18rem; letter-spacing: -0.01em; }
+        .lab-title p { margin: 2px 0 0; color: var(--muted); font-size: 0.88rem; }
+        .pill {
+            flex: 0 0 auto;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--green);
+            border: 1px solid rgba(52, 211, 153, 0.32);
+            background: rgba(52, 211, 153, 0.1);
+        }
+
+        .lab-body { padding: 22px 24px 26px; }
+
+        .subhead {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 14px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted-2);
+        }
+        .subhead::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--line-soft), transparent);
+        }
+
+        /* ---------- link cards ---------- */
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+            margin: 0 0 26px;
+            padding: 0;
+            list-style: none;
+        }
+        .links a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 15px;
+            border-radius: 11px;
+            border: 1px solid var(--line-soft);
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--text);
+            text-decoration: none;
+            transition: transform 0.18s, border-color 0.18s, background 0.18s, box-shadow 0.18s;
+        }
+        .links a::after {
+            content: "\2192";
+            margin-left: auto;
+            color: var(--muted-2);
+            font-size: 1rem;
+            transition: color 0.18s, transform 0.18s;
+        }
+        .links a:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: rgba(37, 99, 235, 0.16);
+            box-shadow: 0 14px 26px -18px rgba(56, 189, 248, 1);
+        }
+        .links a:hover::after { color: var(--accent); transform: translateX(3px); }
+
+        .file-icon {
+            flex: 0 0 auto;
+            width: 32px; height: 32px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--accent);
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+        .links .txt { min-width: 0; }
+        .links .name { display: block; font-weight: 600; font-size: 0.94rem; }
+        .links .path {
+            display: block;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.74rem;
+            color: var(--muted-2);
+            margin-top: 1px;
+        }
+
+        /* ---------- validation gallery ---------- */
+        .validated {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 16px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .shot a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--line-soft);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            overflow: hidden;
+            transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+        }
+        .shot a:hover {
+            transform: translateY(-3px);
+            border-color: rgba(52, 211, 153, 0.6);
+            box-shadow: 0 18px 30px -20px rgba(52, 211, 153, 1);
+        }
+
+        .shot .frame {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            background: #f8fafc;
+            overflow: hidden;
+        }
+        .shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.35s ease;
+        }
+        .shot a:hover img { transform: scale(1.04); }
+
+        .shot .frame::after {
+            content: "View full size";
+            position: absolute;
+            right: 8px; bottom: 8px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #04121f;
+            background: rgba(52, 211, 153, 0.95);
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.18s, transform 0.18s;
+        }
+        .shot a:hover .frame::after { opacity: 1; transform: translateY(0); }
+
+        .shot .meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-top: 1px solid var(--line-soft);
+        }
+        .tick {
+            flex: 0 0 auto;
+            width: 18px; height: 18px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(52, 211, 153, 0.16);
+            border: 1px solid rgba(52, 211, 153, 0.45);
+            color: var(--green);
+            font-size: 0.62rem;
+            font-weight: 900;
+        }
+        .shot .meta .f {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ---------- footer ---------- */
+        footer {
+            margin-top: 54px;
+            padding-top: 26px;
+            border-top: 1px solid var(--line-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            color: var(--muted-2);
+            font-size: 0.86rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        footer .right { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        @media (max-width: 620px) {
+            .hero { padding: 32px 22px 30px; }
+            .lab-head { padding: 16px 18px; }
+            .lab-body { padding: 18px 18px 22px; }
+            .links { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+            html { scroll-behavior: auto; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>CSF3133 Web Development Portfolio</h1>
-            <p class="subtitle"><strong>Nabil-Dev-Ops</strong></p>
-            <div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="wrap">
+
+        <!-- ============ TOP BAR ============ -->
+        <div class="topbar">
+            <div class="brand">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Nabil-Dev-Ops<br><small>S80306 &bull; CSF3133</small></span>
+            </div>
+            <nav class="topnav" aria-label="Jump to lab">
+                <a href="#lab1">Lab 1</a>
+                <a href="#lab2">Lab 2</a>
+                <a href="#lab3">Lab 3</a>
+                <a href="#validation">Validation</a>
+            </nav>
+        </div>
+
+        <!-- ============ HERO ============ -->
+        <header class="hero">
+            <span class="eyebrow">All labs validated</span>
+            <h1>CSF3133 <span class="grad">Web Development</span><br>Lab Portfolio</h1>
+            <p class="lead">
+                Three labs of hand-written HTML &mdash; from first headings and forms, through tables and
+                semantic markup, to HTML5 input types, entities and live <code>&lt;output&gt;</code>
+                calculators. Every page below has been checked with the W3C Nu HTML Checker.
+            </p>
+
+            <div class="hero-tags">
                 <span class="badge">S80306</span>
                 <span class="badge">CSF3133</span>
                 <span class="badge">Group K3</span>
+                <span class="badge">Muhammad Nabil Bin Taha</span>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="num">3</div>
+                    <div class="lbl">Labs</div>
+                </div>
+                <div class="stat">
+                    <div class="num">21</div>
+                    <div class="lbl">Pages</div>
+                </div>
+                <div class="stat">
+                    <div class="num">15</div>
+                    <div class="lbl">Validation screenshots</div>
+                </div>
+                <div class="stat">
+                    <div class="num">0<span> err / 0 warn</span></div>
+                    <div class="lbl">W3C Nu checker</div>
+                </div>
             </div>
         </header>
 
-        <div class="grid">
-            <div class="card">
-                <h2>Lab 1</h2>
-                <p class="desc">HTML basics, headings, links, and forms</p>
-                <ul>
-                    <li><a href="lab1/index.html">My First Web Page<span class="filename">lab1/index.html</span></a></li>
-                    <li><a href="lab1/lab1.html">About Me (Personal Webpage)<span class="filename">lab1/lab1.html</span></a></li>
-                    <li><a href="lab1/lab1_ExerA.html">Exercise A: Kopi &amp; Roti Caf&eacute;<span class="filename">lab1/lab1_ExerA.html</span></a></li>
-                    <li><a href="lab1/lab1_ExerB.html">Exercise B: Campus Coding Club<span class="filename">lab1/lab1_ExerB.html</span></a></li>
-                    <li><a href="lab1/contact.html">Contact Us Page<span class="filename">lab1/contact.html</span></a></li>
+        <!-- ============ LAB 1 ============ -->
+        <section class="lab" id="lab1">
+            <div class="lab-head">
+                <div class="lab-num">01</div>
+                <div class="lab-title">
+                    <h2>Lab 1 &mdash; HTML Basics</h2>
+                    <p>Headings, links, lists, images and your first forms</p>
+                </div>
+                <span class="pill">3 validations</span>
+            </div>
+            <div class="lab-body">
+                <p class="subhead">Pages</p>
+                <ul class="links">
+                    <li><a href="lab1/index.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">My First Web Page</span><span class="path">lab1/index.html</span></span>
+                    </a></li>
+                    <li><a href="lab1/lab1.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">About Me (Personal Webpage)</span><span class="path">lab1/lab1.html</span></span>
+                    </a></li>
+                    <li><a href="lab1/lab1_ExerA.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Exercise A: Kopi &amp; Roti Caf&eacute;</span><span class="path">lab1/lab1_ExerA.html</span></span>
+                    </a></li>
+                    <li><a href="lab1/lab1_ExerB.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Exercise B: Campus Coding Club</span><span class="path">lab1/lab1_ExerB.html</span></span>
+                    </a></li>
+                    <li><a href="lab1/contact.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Contact Us Page</span><span class="path">lab1/contact.html</span></span>
+                    </a></li>
+                </ul>
+
+                <p class="subhead">Validation screenshots</p>
+                <ul class="validated">
+                    <li class="shot">
+                        <a href="lab1/validate%20A.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab1/validate%20A.png" alt="W3C validation result for Lab 1 Exercise A" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab1_ExerA.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab1/validate%20B.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab1/validate%20B.png" alt="W3C validation result for Lab 1 Exercise B" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab1_ExerB.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab1/validate%20contact.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab1/validate%20contact.png" alt="W3C validation result for Lab 1 contact page" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">contact.html</span></span>
+                        </a>
+                    </li>
                 </ul>
             </div>
+        </section>
 
-            <div class="card">
-                <h2>Lab 2</h2>
-                <p class="desc">Tables, forms, semantic tags &amp; exercises</p>
-                <ul>
-                    <li><a href="lab2/lab2.html">Personal Profile Page<span class="filename">lab2/lab2.html</span></a></li>
-                    <li><a href="lab2/form.html">Creating Forms<span class="filename">lab2/form.html</span></a></li>
-                    <li><a href="lab2/table.html">Working with Tables<span class="filename">lab2/table.html</span></a></li>
-                    <li><a href="lab2/semantic.html">Semantic HTML Example<span class="filename">lab2/semantic.html</span></a></li>
-                    <li><a href="lab2/lab2_ExerA.html">Exercise A: Faculty Event Page<span class="filename">lab2/lab2_ExerA.html</span></a></li>
-                    <li><a href="lab2/lab2_ExerB.html">Exercise B: Course Feedback (Fixed &amp; Extended)<span class="filename">lab2/lab2_ExerB.html</span></a></li>
+        <!-- ============ LAB 2 ============ -->
+        <section class="lab" id="lab2">
+            <div class="lab-head">
+                <div class="lab-num">02</div>
+                <div class="lab-title">
+                    <h2>Lab 2 &mdash; Tables, Forms &amp; Semantics</h2>
+                    <p>Structured data, form controls and semantic page layout</p>
+                </div>
+                <span class="pill">2 validations</span>
+            </div>
+            <div class="lab-body">
+                <p class="subhead">Pages</p>
+                <ul class="links">
+                    <li><a href="lab2/lab2.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Personal Profile Page</span><span class="path">lab2/lab2.html</span></span>
+                    </a></li>
+                    <li><a href="lab2/form.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Creating Forms</span><span class="path">lab2/form.html</span></span>
+                    </a></li>
+                    <li><a href="lab2/table.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Working with Tables</span><span class="path">lab2/table.html</span></span>
+                    </a></li>
+                    <li><a href="lab2/semantic.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Semantic HTML Example</span><span class="path">lab2/semantic.html</span></span>
+                    </a></li>
+                    <li><a href="lab2/lab2_ExerA.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Exercise A: Faculty Event Page</span><span class="path">lab2/lab2_ExerA.html</span></span>
+                    </a></li>
+                    <li><a href="lab2/lab2_ExerB.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Exercise B: Course Feedback</span><span class="path">lab2/lab2_ExerB.html</span></span>
+                    </a></li>
+                </ul>
+
+                <p class="subhead">Validation screenshots</p>
+                <ul class="validated">
+                    <li class="shot">
+                        <a href="lab2/validate%20A.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab2/validate%20A.png" alt="W3C validation result for Lab 2 Exercise A" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab2_ExerA.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab2/validate%20B.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab2/validate%20B.png" alt="W3C validation result for Lab 2 Exercise B" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab2_ExerB.html</span></span>
+                        </a>
+                    </li>
                 </ul>
             </div>
+        </section>
 
-            <div class="card">
-                <h2>Lab 3</h2>
-                <p class="desc">HTML5 forms, input types, entities &amp; layout</p>
-                <ul>
-                    <li><a href="lab3/intro5.html">Introduction to HTML5<span class="filename">lab3/intro5.html</span></a></li>
-                    <li><a href="lab3/input5.html">HTML5 Input Types<span class="filename">lab3/input5.html</span></a></li>
-                    <li><a href="lab3/inattribute5.html">Input Attributes<span class="filename">lab3/inattribute5.html</span></a></li>
-                    <li><a href="lab3/output5.html">Output Element (Calculator)<span class="filename">lab3/output5.html</span></a></li>
-                    <li><a href="lab3/block.html">Block &amp; Inline Elements<span class="filename">lab3/block.html</span></a></li>
-                    <li><a href="lab3/div.html">Using Div<span class="filename">lab3/div.html</span></a></li>
-                    <li><a href="lab3/entity.html">HTML Entities<span class="filename">lab3/entity.html</span></a></li>
-                    <li><a href="lab3/lab3.html">Interactive Contact Form &amp; Calculator<span class="filename">lab3/lab3.html</span></a></li>
+        <!-- ============ LAB 3 ============ -->
+        <section class="lab" id="lab3">
+            <div class="lab-head">
+                <div class="lab-num">03</div>
+                <div class="lab-title">
+                    <h2>Lab 3 &mdash; HTML5 Forms &amp; Interactivity</h2>
+                    <p>Block vs inline, entities, input types, <code>&lt;datalist&gt;</code> and <code>&lt;output&gt;</code></p>
+                </div>
+                <span class="pill">10 validations</span>
+            </div>
+            <div class="lab-body">
+                <p class="subhead">Core exercises</p>
+                <ul class="links">
+                    <li><a href="lab3/lab3_ExerA.html">
+                        <span class="file-icon">EX A</span>
+                        <span class="txt"><span class="name">CampusBake&reg; Online Pre-Order</span><span class="path">lab3/lab3_ExerA.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/lab3_ExerB.html">
+                        <span class="file-icon">EX B</span>
+                        <span class="txt"><span class="name">Ticket Booking (Fixed &amp; Extended)</span><span class="path">lab3/lab3_ExerB.html</span></span>
+                    </a></li>
+                </ul>
+
+                <p class="subhead">Tutorial pages</p>
+                <ul class="links">
+                    <li><a href="lab3/intro5.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Introduction to HTML5</span><span class="path">lab3/intro5.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/input5.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">HTML5 Input Types</span><span class="path">lab3/input5.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/inattribute5.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Input Attributes</span><span class="path">lab3/inattribute5.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/output5.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Output Element (Calculator)</span><span class="path">lab3/output5.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/block.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Block &amp; Inline Elements</span><span class="path">lab3/block.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/div.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Using Div</span><span class="path">lab3/div.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/entity.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">HTML Entities</span><span class="path">lab3/entity.html</span></span>
+                    </a></li>
+                    <li><a href="lab3/lab3.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Interactive Contact Form &amp; Calculator</span><span class="path">lab3/lab3.html</span></span>
+                    </a></li>
+                </ul>
+
+                <p class="subhead">Validation screenshots</p>
+                <ul class="validated">
+                    <li class="shot">
+                        <a href="lab3/validate%20A.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20A.png" alt="W3C validation result for lab3_ExerA.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab3_ExerA.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20B.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20B.png" alt="W3C validation result for lab3_ExerB.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab3_ExerB.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20block.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20block.png" alt="W3C validation result for block.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">block.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20div.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20div.png" alt="W3C validation result for div.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">div.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20entity.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20entity.png" alt="W3C validation result for entity.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">entity.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20inattribute5.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20inattribute5.png" alt="W3C validation result for inattribute5.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">inattribute5.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20input5.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20input5.png" alt="W3C validation result for input5.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">input5.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20intro5.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20intro5.png" alt="W3C validation result for intro5.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">intro5.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20lab3.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20lab3.png" alt="W3C validation result for lab3.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">lab3.html</span></span>
+                        </a>
+                    </li>
+                    <li class="shot">
+                        <a href="lab3/validate%20output5.png" target="_blank" rel="noopener">
+                            <span class="frame"><img src="lab3/validate%20output5.png" alt="W3C validation result for output5.html" loading="lazy"></span>
+                            <span class="meta"><span class="tick">&#10003;</span><span class="f">output5.html</span></span>
+                        </a>
+                    </li>
                 </ul>
             </div>
-        </div>
+        </section>
 
+        <!-- ============ VALIDATION SUMMARY ============ -->
+        <section class="lab" id="validation">
+            <div class="lab-head">
+                <div class="lab-num">&#10003;</div>
+                <div class="lab-title">
+                    <h2>Validation Summary</h2>
+                    <p>Every page checked with the W3C Nu HTML Checker &mdash; no errors, no warnings</p>
+                </div>
+                <span class="pill">15 / 15 passed</span>
+            </div>
+            <div class="lab-body">
+                <p class="subhead">How it was checked</p>
+                <p style="margin:0 0 18px;color:var(--muted);font-size:0.94rem;">
+                    Each file was uploaded to
+                    <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">validator.w3.org</a>
+                    using <em>Validate by File Upload</em>. The checker reported
+                    <strong style="color:var(--green);">&ldquo;No errors or warnings to show&rdquo;</strong>
+                    for all 15 submitted pages. Screenshots of each result are shown above, and every
+                    image is clickable to open the full-size capture.
+                </p>
+
+                <p class="subhead">Common fixes applied</p>
+                <ul class="links" style="margin-bottom:0;">
+                    <li><a href="#lab3">
+                        <span class="file-icon">&#10003;</span>
+                        <span class="txt"><span class="name">Declared charset &amp; language</span><span class="path">meta charset="utf-8" + html lang</span></span>
+                    </a></li>
+                    <li><a href="#lab3">
+                        <span class="file-icon">&#10003;</span>
+                        <span class="txt"><span class="name">Fixed empty form actions</span><span class="path">action="" &rarr; action="#"</span></span>
+                    </a></li>
+                    <li><a href="#lab3">
+                        <span class="file-icon">&#10003;</span>
+                        <span class="txt"><span class="name">Removed stray end tag</span><span class="path">&lt;/hr&gt; is not a real tag</span></span>
+                    </a></li>
+                    <li><a href="#lab3">
+                        <span class="file-icon">&#10003;</span>
+                        <span class="txt"><span class="name">Corrected output / label nesting</span><span class="path">output moved outside label</span></span>
+                    </a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ FOOTER ============ -->
         <footer>
-            <p>CSF3133 Web Development &bull; S80306_CSF3133_K3</p>
+            <p style="margin:0;">&copy; 2026 Muhammad Nabil Bin Taha &bull; S80306 &bull; Group K3</p>
+            <div class="right">
+                <a href="https://github.com/Nabil-Dev-Ops/S80306_CSF3133_K3" target="_blank" rel="noopener">GitHub repository</a>
+                <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener">W3C Validator</a>
+            </div>
         </footer>
+
     </div>
 </body>
 </html>
