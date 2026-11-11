@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit Terengganu</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#trip {
+    background-color: #f4fafa;
+}
+.meter-label {
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<!-- header -->
+<header>
+<h1>Visit Terengganu</h1>
+<p>Discover the beauty of Terengganu</p>
+</header>
+
+<!-- navigation bar -->
+<nav>
+<ul>
+<li><a href="#destinations">Destinations</a></li>
+<li><a href="#video">Video</a></li>
+<li><a href="#trip">Trip</a></li>
+</ul>
+</nav>
+
+<!-- destinations -->
+<section id="destinations">
+<h2>Popular Destinations</h2>
+
+<div class="cards">
+<article class="card">
+<h3>Pulau Redang</h3>
+<p>⭐⭐⭐⭐⭐</p>
+<p>A beautiful island with clear blue water and coral reefs, perfect for snorkelling.</p>
+<p class="price"><span class="old-price">RM 299</span></p>
+</article>
+
+<article class="card">
+<h3>Pulau Perhentian</h3>
+<p>⭐⭐⭐⭐⭐</p>
+<p>Famous for its white sandy beaches and sea turtles that come to lay eggs.</p>
+<p class="price"><span class="old-price">RM 349</span></p>
+</article>
+
+<article class="card">
+<h3>Tasik Kenyir</h3>
+<p>⭐⭐⭐⭐</p>
+<p>The largest man-made lake in Malaysia, surrounded by lush rainforest.</p>
+<p class="price"><span class="old-price">RM 199</span></p>
+</article>
+</div>
+
+<p class="meter-label">Trip seats filled:</p>
+<meter min="0" max="40" value="28">28</meter>
+</section>
+
+<!-- video -->
+<section id="video">
+<h2>Watch Our Video</h2>
+<figure>
+<video width="640" height="360" controls>
+<source src="terengganu.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<figcaption>Terengganu tourism promo video</figcaption>
+</figure>
+</section>
+
+<!-- trip form -->
+<section id="trip">
+<h2>Book Your Trip</h2>
+<form class="trip-form" action="#" method="post">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" required>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+
+<fieldset>
+<legend>Traveller Type</legend>
+<label><input type="radio" name="type" value="student"> Student</label>
+<label><input type="radio" name="type" value="staff"> Staff</label>
+<label><input type="radio" name="type" value="public"> Public</label>
+</fieldset>
+
+<fieldset>
+<legend>Interests</legend>
+<label><input type="checkbox" name="interest" value="islands"> Islands</label>
+<label><input type="checkbox" name="interest" value="food"> Food</label>
+<label><input type="checkbox" name="interest" value="culture"> Culture</label>
+<label><input type="checkbox" name="interest" value="nature"> Nature</label>
+</fieldset>
+
+<input type="submit" value="Submit">
+</form>
+</section>
+
+<!-- footer -->
+<footer>
+<p>&copy; 2026 Visit Terengganu</p>
+<address>
+Hubungi kami di <a href="mailto:info@visit-terengganu.my">info@visit-terengganu.my</a>.
+</address>
+</footer>
+
+</body>
+</html>

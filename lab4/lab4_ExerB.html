@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Café Campus</title>
+<link rel="stylesheet" href="cafe.css">
+<style type="text/css">
+a:link {color: #1A5276;}
+a:visited {color: #7D3C98;}
+a:hover {color: #E67E22;}
+a:active {color: #C0392B;}
+h1 {text-decoration: overline;}
+p {color: #333333; text-align: justify;}
+.intro {
+    font-size: 18px;
+    background-color: #FDEBD0;
+}
+.highlight {
+    font-weight: bold;
+    color: #C0392B;
+}
+</style>
+</head>
+<body>
+<!--
+Error 1 (Line 7): Invalid comment syntax, space between ! and the dashes. Fixed to a proper HTML comment.
+Error 2 (Line 9): "list-style-type: no" is not a valid value. Fixed to "none".
+Error 3 (Lines 13-16): Link states in wrong order (a:hover before a:visited). Fixed order: link, visited, hover, active.
+Error 4 (Line 17): "text-decoration: overlined" is not a valid value. Fixed to "overline".
+Error 5 (Line 18): Missing colon in "color #333333". Fixed to "color: #333333".
+Error 6 (Line 19): Missing closing brace for the #intro rule. Added the closing brace.
+Error 7 (Line 19/41): "#intro" is an ID selector but the HTML uses class="intro". Fixed to ".intro".
+Error 8 (Line 22): "highlight" is missing a dot. Fixed to ".highlight".
+Error 9 (Line 34): href="menu" is missing "#". Fixed to href="#menu".
+Error 10 (Lines 42 & 46): Duplicate id="item". Fixed to class="item".
+Error 11 (Line 53): video tag is missing the "controls" attribute. Added controls.
+Error 12 (Line 54): type="mp4" is not a valid MIME type. Fixed to type="video/mp4".
+-->
+
+<!-- header -->
+<header>
+<h1>e-Café Campus</h1>
+</header>
+
+<!-- navigation bar -->
+<nav>
+<ul>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#video">Video</a></li>
+<li><a href="#feedback">Feedback</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- menu -->
+<section id="menu">
+<h2>Today's Menu</h2>
+<p class="intro">Freshly brewed coffee and local delights every day.</p>
+<article class="item">
+<h3>Kopi Tarik</h3>
+<p>Only <span class="old-price">RM 4.50</span> <span class="highlight">RM 3.50</span></p>
+</article>
+<article class="item">
+<h3>Nasi Lemak</h3>
+<p>Only <span class="old-price">RM 6.00</span> <span class="highlight">RM 5.00</span></p>
+</article>
+</section>
+
+<!-- video -->
+<section id="video">
+<h2>Watch Our Story</h2>
+<figure>
+<video width="400" height="300" controls>
+<source src="cafe.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<figcaption>Our story at e-Café Campus</figcaption>
+</figure>
+</section>
+
+<!-- feedback form -->
+<section id="feedback">
+<h2>Feedback</h2>
+<form class="feedback-form" action="#" method="post">
+<label for="fname">Name:</label>
+<input type="text" id="fname" name="fname" required>
+
+<label for="femail">Email:</label>
+<input type="email" id="femail" name="femail" required>
+
+<fieldset>
+<legend>Visit Type</legend>
+<label><input type="radio" name="visit" value="dine-in"> Dine-in</label>
+<label><input type="radio" name="visit" value="take-away"> Take-away</label>
+</fieldset>
+
+<fieldset>
+<legend>Favourite Items</legend>
+<label><input type="checkbox" name="fav" value="kopi"> Kopi Tarik</label>
+<label><input type="checkbox" name="fav" value="nasi"> Nasi Lemak</label>
+<label><input type="checkbox" name="fav" value="teh"> Teh Tarik</label>
+<label><input type="checkbox" name="fav" value="roti"> Roti Bakar</label>
+</fieldset>
+
+<input type="submit" value="Submit">
+</form>
+</section>
+
+<!-- footer -->
+<footer id="contact">
+<p>&copy; 2026 e-Café Campus</p>
+<address>
+Hubungi kami di <a href="mailto:ecafe@campus.edu.my">nmuhd1444@gmail.com</a>.
+</address>
+</footer>
+
+</body>
+</html>

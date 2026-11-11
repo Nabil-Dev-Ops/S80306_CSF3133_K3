@@ -1,0 +1,233 @@
+/* body */
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #eef6f8;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* header */
+header {
+    background: linear-gradient(135deg, #0e7c86, #148f77);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 50px 15px 40px;
+}
+
+header h1 {
+    text-decoration: overline;
+    margin: 0 0 8px;
+    font-size: 2.4em;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* navigation bar */
+nav {
+    background-color: #0b3d4a;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li { display: inline-block; }
+
+nav a:link, nav a:visited {
+    display: block;
+    color: #FFFFFF;
+    padding: 14px 26px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.95em;
+    letter-spacing: 1px;
+}
+
+nav a:hover, nav a:active {
+    background-color: #148f77;
+}
+
+/* sections */
+section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+section h2 {
+    text-decoration: underline;
+    color: #0e7c86;
+    margin-top: 0;
+    font-size: 1.6em;
+}
+
+#video { background-color: #f2faf9; }
+
+/* destination cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    flex: 1 1 260px;
+    max-width: 300px;
+    border-top: 5px solid #148f77;
+    background-color: #f8fcfc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #0b3d4a;
+}
+
+.price {
+    font-weight: bold;
+    color: #148f77;
+    font-size: 1.15em;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: normal;
+    font-size: 0.9em;
+    margin-right: 6px;
+}
+
+/* meter */
+meter {
+    width: 220px;
+    height: 22px;
+    accent-color: #148f77;
+}
+
+/* video */
+figure { text-align: center; margin: 0; }
+
+video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+figcaption {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* trip form */
+.trip-form {
+    background-color: #f4fafa;
+    padding: 25px;
+    border: 1px solid #cfe8e5;
+    width: 90%;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.trip-form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #0b3d4a;
+}
+
+.trip-form input[type="text"], .trip-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #b9d9d6;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.trip-form input[type="text"]:focus, .trip-form input[type="email"]:focus {
+    border-color: #148f77;
+    outline: none;
+}
+
+.trip-form fieldset {
+    margin-top: 15px;
+    border: 1px solid #b9d9d6;
+    border-radius: 6px;
+}
+
+.trip-form legend {
+    font-weight: bold;
+    color: #0b3d4a;
+    padding: 0 6px;
+}
+
+.trip-form fieldset label {
+    font-weight: normal;
+    margin-top: 6px;
+}
+
+.trip-form input[type="submit"] {
+    margin-top: 18px;
+    padding: 12px 26px;
+    background-color: #148f77;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.trip-form input[type="submit"]:hover {
+    background-color: #0e6655;
+}
+
+/* link states */
+a:link { color: #0e7c86; }
+a:visited { color: #7d3c98; }
+a:hover { color: #e67e22; }
+a:active { color: #c0392b; }
+
+/* footer */
+footer {
+    background-color: #0b3d4a;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 30px;
+}
+
+footer a:link, footer a:visited { color: #7fd1c0; }
+footer a:hover, footer a:active { color: #FFFFFF; }
+
+/* small screens */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.7em; }
+    section { padding: 20px; }
+    nav li { display: block; }
+    .card { max-width: 100%; }
+}
