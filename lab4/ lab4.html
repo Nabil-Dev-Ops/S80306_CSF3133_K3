@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab 4 - Cascading Style Sheets (CSS) Part 1</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== Internal CSS (Form Styling) ===== */
+form {
+max-width: 500px;
+margin: 20px auto;
+padding: 20px;
+background-color: #f9f9f9;
+border: 1px solid #ddd;
+border-radius: 8px;
+}
+form label {
+display: block;
+margin-top: 12px;
+font-weight: bold;
+}
+form input[type="text"],
+form input[type="email"] {
+width: 100%;
+padding: 8px;
+margin-top: 4px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+form fieldset {
+margin-top: 15px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+form legend {
+font-weight: bold;
+padding: 0 5px;
+}
+form fieldset label {
+display: block;
+font-weight: normal;
+margin-top: 6px;
+}
+form input[type="submit"] {
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #98bf21;
+color: #FFFFFF;
+font-weight: bold;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+text-transform: uppercase;
+}
+form input[type="submit"]:hover {
+background-color: #7A991A;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Lab 4: Cascading Style Sheets (CSS) - Part 1</h1>
+<p class="subtitle">Building a Responsive Webpage with HTML5 and CSS</p>
+</header>
+
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#video">Video</a></li>
+<li><a href="#form">Form</a></li>
+<li><a href="#about">About</a></li>
+</ul>
+</nav>
+
+<main>
+
+<section id="home">
+<h2>Welcome</h2>
+<article>
+<p>This webpage integrates various HTML5 and CSS concepts learned in Lab 4. It uses semantic HTML5 elements to structure content, embeds video for interactivity, and applies CSS to create a visually appealing and responsive design.</p>
+<p>Try hovering over the navigation links to see the <span class="highlight">hover</span> effect, and click a link to see the <span class="highlight">active</span> state.</p>
+</article>
+</section>
+
+<section id="video">
+<h2>Featured Video</h2>
+<figure>
+<video width="640" height="360" controls>
+<source src="upinipin.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<figcaption>Upin &amp; Ipin video. Place the file <b>upinipin.mp4</b> in the same folder as lab4.html.</figcaption>
+</figure>
+</section>
+
+<section id="form">
+<h2>Registration Form</h2>
+<form action="#" method="post">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+<fieldset>
+<legend>Gender</legend>
+<label><input type="radio" name="gender" value="male"> Male</label>
+<label><input type="radio" name="gender" value="female"> Female</label>
+</fieldset>
+
+<fieldset>
+<legend>Favorite Hobbies</legend>
+<label><input type="checkbox" name="hobbies" value="reading"> Reading</label>
+<label><input type="checkbox" name="hobbies" value="sports"> Sports</label>
+<label><input type="checkbox" name="hobbies" value="music"> Music</label>
+<label><input type="checkbox" name="hobbies" value="gaming"> Gaming</label>
+<label><input type="checkbox" name="hobbies" value="drawing"> Drawing</label>
+</fieldset>
+
+<input type="submit" value="Submit">
+</form>
+</section>
+
+<section id="about">
+<h2>About</h2>
+<article>
+<p>This lab exercise demonstrates the integration of HTML5 semantic elements and CSS styling, including internal and external CSS, text decoration, and interactive link states.</p>
+</article>
+</section>
+
+</main>
+
+<footer>
+<p>&copy; 2026 Hakcipta Terpelihara.</p>
+<address>
+Hubungi kami di <a href="mailto:emailanda@umt.edu.my">email saya</a>.
+</address>
+</footer>
+
+</body>
+</html>
