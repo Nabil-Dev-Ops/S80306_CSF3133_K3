@@ -1,155 +1,119 @@
-/* ===== External CSS: style.css ===== */
-
-/* General page styling */
 body {
-font-family: Arial, Helvetica, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #f4f4f4;
-color: #333;
-line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* Header */
 header {
-background-color: #2c3e50;
-color: #FFFFFF;
-text-align: center;
-padding: 30px 15px;
-}
-header h1 {
-text-decoration: overline; /* text-decoration: overline */
-margin: 0 0 10px 0;
-}
-.subtitle {
-font-style: italic;
-margin: 0;
+    background-color: #2c3e50;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 30px 15px;
 }
 
-/* Navigation bar (unordered list styled with CSS) */
-nav {
-background-color: #34495e;
+header h1 {
+    text-decoration: overline;
+    margin: 0 0 10px 0;
 }
+
+nav { background-color: #34495e; }
+
 nav ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-nav li {
-margin: 0;
-}
+
 nav a:link, nav a:visited {
-display: block;
-font-weight: bold;
-color: #FFFFFF;
-background-color: #98bf21;
-width: 120px;
-text-align: center;
-padding: 10px 4px;
-margin: 5px;
-text-decoration: none; /* remove underline from links */
-text-transform: uppercase;
-border-radius: 4px;
+    display: block;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #98bf21;
+    width: 120px;
+    text-align: center;
+    padding: 10px 4px;
+    margin: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 4px;
 }
+
 nav a:hover, nav a:active {
-background-color: #7A991A;
-text-decoration: underline; /* underline appears on hover */
+    background-color: #7A991A;
+    text-decoration: underline;
 }
 
-/* Main content */
 main {
-max-width: 900px;
-margin: 0 auto;
-padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
 }
+
 section {
-background-color: #FFFFFF;
-padding: 20px;
-margin-bottom: 20px;
-border-radius: 8px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 section h2 {
-text-decoration: underline; /* text-decoration: underline */
-color: #2c3e50;
-border-bottom: 2px solid #98bf21;
-padding-bottom: 5px;
+    text-decoration: underline;
+    color: #2c3e50;
+    border-bottom: 2px solid #98bf21;
+    padding-bottom: 5px;
 }
 
-/* ID selector example */
-#video {
-background-color: #eef6e0;
-}
+#video { background-color: #eef6e0; }
 
-/* Class selector example */
 .highlight {
-background-color: #fff3cd;
-padding: 2px 6px;
-border-radius: 3px;
-text-decoration: line-through; /* creative use of line-through */
+    background-color: #fff3cd;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-decoration: line-through;
 }
 
-/* Video (responsive) */
-figure {
-margin: 0;
-text-align: center;
-}
+figure { margin: 0; text-align: center; }
+
 video {
-max-width: 100%; /* responsive: fits the design */
-height: auto;
-border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
+
 figcaption {
-margin-top: 10px;
-font-style: italic;
-color: #555;
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
 }
 
-/* General link states */
-a:link {
-color: #2980b9;
-}
-a:visited {
-color: #8e44ad;
-}
-a:hover {
-color: #e74c3c;
-text-decoration: underline;
-}
-a:active {
-color: #f39c12;
-}
+a:link { color: #2980b9; }
+a:visited { color: #8e44ad; }
+a:hover { color: #e74c3c; text-decoration: underline; }
+a:active { color: #f39c12; }
 
-/* Footer */
 footer {
-background-color: #2c3e50;
-color: #FFFFFF;
-text-align: center;
-padding: 20px 15px;
-}
-footer a:link, footer a:visited {
-color: #98bf21;
-}
-footer a:hover, footer a:active {
-color: #FFFFFF;
+    background-color: #2c3e50;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 15px;
 }
 
-/* Responsive design for small screens */
+footer a:link, footer a:visited { color: #98bf21; }
+footer a:hover, footer a:active { color: #FFFFFF; }
+
 @media (max-width: 600px) {
-nav ul {
-flex-direction: column;
-align-items: center;
-}
-nav a:link, nav a:visited {
-width: 80%;
-}
-header h1 {
-font-size: 1.4em;
-}
-main {
-padding: 10px;
-}
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a:link, nav a:visited { width: 80%; }
+    header h1 { font-size: 1.4em; }
+    main { padding: 10px; }
 }
