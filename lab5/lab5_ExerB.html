@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Bookstore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&amp;family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shop.css">
+    <style>
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <!--
+    1. shop.html, line 7: stylesheets was changed to stylesheet.
+    2. shop.html, lines 10 to 12: the style element was moved into the head.
+    3. shop.html, line 18: color used an equals sign instead of a colon.
+    4. shop.css, line 2: Robotto was corrected to Roboto.
+    5. shop.css, line 4: no repeat was corrected to no-repeat.
+    6. shop.css, line 5: bacground-position was corrected to background-position.
+    7. shop.css, line 18: inline was changed to block for navigation links.
+    8. shop.css, line 23: li:a:hover was corrected to li a:hover.
+    9. shop.css, lines 26, 30, 34, 37 and 40: products was changed to product to match the table ID.
+    10. shop.css, line 27: collapsed was corrected to collapse.
+    11. shop.css, line 34: nth-child(2) was changed to nth-child(even) for alternating rows.
+    12. shop.css, line 37: hovered was corrected to hover.
+    13. shop.css, line 45: a missing semicolon was added after the background colour.
+    -->
+    <header id="home">
+        <h1 style="color: white;">Campus Bookstore</h1>
+        <p>Textbooks, stationery and more for every student.</p>
+    </header>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a class="active" href="#home" aria-current="page">Home</a></li>
+            <li><a href="#books">Books</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="books">
+            <h2>Books and Supplies</h2>
+            <p>Browse our selection of textbooks, stationery and useful items for campus life.</p>
+            <div class="table-container">
+                <table id="product">
+                    <thead><tr><th scope="col">Item</th><th scope="col">Category</th><th scope="col">Price (RM)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Web Design Basics</td><td>Textbook</td><td>45.00</td></tr>
+                        <tr><td>A4 Notebook</td><td>Stationery</td><td>6.50</td></tr>
+                        <tr><td>USB Drive 32GB</td><td>Gadget</td><td>25.00</td></tr>
+                        <tr><td>Highlighter Set</td><td>Stationery</td><td>9.90</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer id="contact">
+        <p>&copy; 2026 Campus Bookstore</p>
+    </footer>
+</body>
+</html>
