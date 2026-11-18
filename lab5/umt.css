@@ -1,0 +1,36 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Roboto, Arial, sans-serif; color: #18344a; background: #f2f7fa; line-height: 1.7; }
+.container { width: min(1100px, 90%); margin: 0 auto; }
+header { color: white; background: linear-gradient(120deg, #073756, #086a80 70%, #10a0a3); }
+.hero { padding: 72px 0 80px; }
+.tag { display: inline-block; padding: 5px 13px; border: 1px solid #90dce0; border-radius: 30px; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-size: clamp(2.3rem, 5vw, 4.3rem); line-height: 1.1; margin: 22px 0 16px; }
+.hero p { font-size: 1.1rem; color: #d4f1f3; margin: 0; }
+nav { background: #082e48; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { font-weight: 700; letter-spacing: .12em; }
+.nav-links { display: flex; flex-wrap: wrap; }
+nav a { display: block; color: white; text-decoration: none; padding: 16px 18px; }
+nav a:hover, nav a:focus-visible { background: #0b7384; }
+main { padding: 20px 0 54px; }
+section { background: white; margin-top: 26px; padding: 34px; border: 1px solid #dce9ee; border-radius: 14px; box-shadow: 0 8px 24px rgba(7, 55, 86, .06); }
+.eyebrow { margin: 0 0 4px; color: #087c88; text-transform: uppercase; font-weight: 700; font-size: .75rem; letter-spacing: .12em; }
+h2 { font-size: 1.7rem; margin: 0 0 15px; color: #073756; }
+article p { margin: 0 0 16px; }
+a { color: #086e80; }
+.source { font-size: .88rem; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 440px; }
+caption { text-align: left; font-weight: 700; padding: 8px 0; }
+th, td { border: 1px solid #d3e2e8; text-align: left; padding: 12px 15px; }
+thead th { background: #08677a; color: white; }
+tbody tr:nth-child(even) { background: #f1f8f9; }
+tbody tr:hover { background: #dff2f1; }
+.contact { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: #e7f5f5; }
+.contact p:last-child { margin-bottom: 0; }
+.button { display: inline-block; padding: 11px 18px; border-radius: 8px; background: #08677a; color: white; text-decoration: none; font-weight: 700; }
+.button:hover, .button:focus-visible { background: #07475a; }
+footer { padding: 22px; text-align: center; background: #dcebed; color: #345969; }
+footer p { margin: 0; }
+@media (max-width: 600px) { .hero { padding: 50px 0; } section { padding: 22px; } nav a { padding: 12px 10px; } }
