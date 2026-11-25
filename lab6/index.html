@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+    Lab Exercise 6 - Quiz Application
+    Subject : Web Design
+    Name    : ____________________
+    Matric  : ____________________
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Quiz | Lab Exercise 6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header: introduces the quiz -->
+    <header class="site-header">
+        <div class="logo" aria-hidden="true">&lt;/&gt;</div>
+        <h1>Web Design Quiz</h1>
+        <p class="subtitle">Test your knowledge of HTML, CSS and JavaScript</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Start screen -->
+        <section id="start-screen" class="card">
+            <h2>Are you ready?</h2>
+            <ul class="rules">
+                <li><span class="rule-icon">?</span> <span id="rule-count">10</span> multiple-choice questions in random order</li>
+                <li><span class="rule-icon">&#9201;</span> <span id="rule-time">15</span> seconds to answer each question</li>
+                <li><span class="rule-icon">&#10003;</span> 1 mark for every correct answer</li>
+            </ul>
+            <button id="start-btn" class="btn btn-primary">Start Quiz</button>
+        </section>
+
+        <!-- Question section: question, answer options and timer -->
+        <section id="quiz-screen" class="card hidden">
+            <div class="quiz-top">
+                <span id="question-counter" class="badge">Question 1 of 10</span>
+                <div id="timer" class="timer" aria-live="off">
+                    <span class="timer-icon" aria-hidden="true">&#9201;</span>
+                    <span id="time-left">15</span>s
+                </div>
+            </div>
+            <div class="timer-bar" aria-hidden="true">
+                <div id="timer-progress" class="timer-progress"></div>
+            </div>
+
+            <h2 id="question-text" class="question-text"></h2>
+            <div id="options" class="options" role="radiogroup" aria-labelledby="question-text"></div>
+
+            <!-- Feedback section: correct / incorrect after each answer -->
+            <section id="feedback" class="feedback hidden" role="status" aria-live="polite"></section>
+
+            <!-- Button to submit answers and navigate between questions -->
+            <div class="actions">
+                <button id="action-btn" class="btn btn-primary" disabled>Submit Answer</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer: displays the user's score -->
+    <footer class="site-footer">
+        <div id="live-score" class="live-score">
+            Score: <strong id="score">0</strong> / <span id="total">0</span>
+        </div>
+
+        <div id="result" class="result hidden">
+            <h2>Quiz Completed!</h2>
+            <div class="result-circle">
+                <span id="final-score">0/0</span>
+                <small id="final-percent">0%</small>
+            </div>
+            <p id="result-message" class="result-message"></p>
+            <button id="restart-btn" class="btn btn-light">Try Again</button>
+        </div>
+
+        <p class="credit">Lab Exercise 6 &middot; Web Design &middot; Universiti Malaysia Terengganu</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
