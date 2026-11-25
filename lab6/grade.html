@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+    Additional Lab Exercise 6 - Problem B: Student Grade Calculator (Debugging and Extend)
+    Name   : Muhammad Nabil Bin Taha
+    Matric : S80306
+    Course : CSF3133 Web Development (Group K3)
+    The list of errors found and fixed is written at the top of grade.js
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <!-- EXTEND (Part 2, No. 9): link the external stylesheet -->
+    <link rel="stylesheet" href="styleExerB.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Student Grade Calculator</h1>
+
+        <!-- FIX: "return" added so the page does not reload when checkMark() returns false -->
+        <form name="gradeForm" onsubmit="return checkMark()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter student name">
+            </div>
+            <div class="form-group">
+                <label for="mark">Mark (0-100):</label>
+                <div class="mark-row">
+                    <input type="text" id="mark" name="mark" placeholder="e.g. 72">
+                    <!-- EXTEND (Part 2, No. 7): Random Mark button.
+                         type="button" so it does not submit the form -->
+                    <button type="button" class="btn btn-secondary" onclick="randomMark()">Random Mark</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Grade</button>
+        </form>
+
+        <!-- Result of the grade check -->
+        <p id="result"></p>
+        <!-- EXTEND (Part 2, No. 8): date and time the grade was checked -->
+        <p id="checkedTime"></p>
+
+        <!-- FIX: function name changed from showtable() to showTable() -->
+        <button type="button" class="btn btn-primary" onclick="showTable()">Show Grade Table</button>
+        <div id="tableContainer"></div>
+    </main>
+
+    <!-- FIX: file name changed from grades.js to grade.js -->
+    <script src="grade.js"></script>
+</body>
+</html>

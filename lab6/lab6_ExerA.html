@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+    Additional Lab Exercise 6 - Problem A: Rock, Paper, Scissors Game
+    Name   : Muhammad Nabil Bin Taha
+    Matric : S80306
+    Course : CSF3133 Web Development (Group K3)
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors | Lab 6 Exercise A</title>
+    <!-- Link the external stylesheet -->
+    <link rel="stylesheet" href="styleExerA.css">
+</head>
+<body>
+
+    <!-- ========== HEADER: game title and short instruction ========== -->
+    <header class="site-header">
+        <h1>Rock, Paper, Scissors</h1>
+        <p>Enter your name, click <strong>Start Game</strong>, then pick Rock, Paper or Scissors to play against the computer.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- ========== PLAYER SECTION: name input and Start Game button ========== -->
+        <section id="player-section" class="card">
+            <h2>Player</h2>
+            <div class="player-form">
+                <label for="playerName">Name:</label>
+                <input type="text" id="playerName" placeholder="Enter your name">
+                <button type="button" class="btn btn-primary" onclick="startGame()">Start Game</button>
+            </div>
+            <p id="welcome" class="welcome"></p>
+        </section>
+
+        <!-- ========== GAME SECTION: choice buttons and images ========== -->
+        <section id="game-section" class="card">
+            <h2>Make Your Choice</h2>
+            <div class="choices">
+                <button type="button" class="btn btn-choice" onclick="playRound('rock')">Rock</button>
+                <button type="button" class="btn btn-choice" onclick="playRound('paper')">Paper</button>
+                <button type="button" class="btn btn-choice" onclick="playRound('scissors')">Scissors</button>
+            </div>
+
+            <div class="arena">
+                <figure>
+                    <img id="playerImg" class="idle" src="rock.png" alt="Your choice">
+                    <figcaption>You</figcaption>
+                </figure>
+                <span class="vs">VS</span>
+                <figure>
+                    <img id="computerImg" class="idle flip" src="rock.png" alt="Computer's choice">
+                    <figcaption>Computer</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ========== RESULT SECTION: result message and scoreboard ========== -->
+        <section id="result-section" class="card">
+            <h2>Result</h2>
+            <p id="result"></p>
+
+            <div class="scoreboard">
+                <div class="score score-win">
+                    <span id="wins">0</span>
+                    <small>Wins</small>
+                </div>
+                <div class="score score-lose">
+                    <span id="losses">0</span>
+                    <small>Losses</small>
+                </div>
+                <div class="score score-draw">
+                    <span id="draws">0</span>
+                    <small>Draws</small>
+                </div>
+            </div>
+
+            <!-- Summary text is shown here by showSummary() -->
+            <p id="summary" class="summary"></p>
+        </section>
+
+        <!-- ========== HISTORY SECTION: table of every round ========== -->
+        <section id="history-section" class="card">
+            <h2>Game History</h2>
+            <div class="table-wrap">
+                <table id="history">
+                    <thead>
+                        <tr>
+                            <th>Round</th>
+                            <th>You</th>
+                            <th>Computer</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <!-- New rows are added here by playRound() -->
+                    <tbody id="historyBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ========== ACTION BUTTONS: Show Summary and Reset ========== -->
+        <div class="actions">
+            <button type="button" class="btn btn-primary" onclick="showSummary()">Show Summary</button>
+            <button type="button" class="btn btn-secondary" onclick="resetGame()">Reset</button>
+        </div>
+
+    </main>
+
+    <!-- ========== FOOTER: start time and copyright ========== -->
+    <footer class="site-footer">
+        <p id="startTime"></p>
+        <p>&copy; 2026 Muhammad Nabil Bin Taha (S80306) &bull; CSF3133 Web Development</p>
+    </footer>
+
+    <!-- Link the external JavaScript file -->
+    <script src="game.js"></script>
+</body>
+</html>

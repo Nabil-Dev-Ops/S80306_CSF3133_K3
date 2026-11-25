@@ -1,0 +1,298 @@
+/* =====================================================
+   Additional Lab Exercise 6 - Problem A
+   Rock, Paper, Scissors Game - Stylesheet
+   ===================================================== */
+
+/* ---------- Reset and page base ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #eef2f7;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    background: linear-gradient(135deg, #4338ca, #7c3aed);
+    color: #ffffff;
+    text-align: center;
+    padding: 36px 20px 60px;
+}
+
+.site-header h1 {
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+}
+
+.site-header p {
+    max-width: 620px;
+    margin: 8px auto 0;
+    opacity: 0.9;
+}
+
+/* ---------- Main layout and cards ---------- */
+.container {
+    max-width: 760px;
+    margin: -36px auto 30px;
+    padding: 0 16px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    padding: 24px;
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    font-size: 1.15rem;
+    color: #4338ca;
+    margin-bottom: 14px;
+}
+
+/* ---------- Player section ---------- */
+.player-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.player-form label {
+    font-weight: 600;
+}
+
+.player-form input {
+    flex: 1 1 200px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.player-form input:focus {
+    outline: none;
+    border-color: #6366f1;
+}
+
+.welcome {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #4338ca;
+}
+
+/* ---------- Buttons (with hover effect) ---------- */
+.btn {
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-primary {
+    background-color: #4f46e5;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #3730a3;
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #1e293b;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+.btn-choice {
+    flex: 1 1 120px;
+    padding: 14px 10px;
+    background-color: #f59e0b;
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+.btn-choice:hover {
+    background-color: #d97706;
+}
+
+/* ---------- Game section: choices and images ---------- */
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.arena {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+
+.arena figure {
+    text-align: center;
+}
+
+/* Fixed image size as required */
+.arena img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: #ffffff;
+    border: 3px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 6px;
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+/* Computer image is mirrored so the hands face each other */
+.arena img.flip {
+    transform: scaleX(-1);
+}
+
+/* Faded images before the first round */
+.arena img.idle {
+    opacity: 0.35;
+    filter: grayscale(100%);
+}
+
+.arena figcaption {
+    margin-top: 6px;
+    font-weight: 700;
+    color: #475569;
+}
+
+.vs {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #7c3aed;
+}
+
+/* ---------- Result and scoreboard ---------- */
+#result {
+    min-height: 1.6em;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.scoreboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.score {
+    text-align: center;
+    padding: 14px 8px;
+    border-radius: 10px;
+}
+
+.score span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.score small {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.score-win  { background: #dcfce7; color: #15803d; }
+.score-lose { background: #fee2e2; color: #b91c1c; }
+.score-draw { background: #f1f5f9; color: #475569; }
+
+.summary {
+    margin-top: 14px;
+    text-align: center;
+    font-weight: 600;
+    color: #4338ca;
+}
+
+/* ---------- History table ---------- */
+.table-wrap {
+    overflow-x: auto;
+}
+
+#history {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#history th,
+#history td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: center;
+}
+
+#history th {
+    background-color: #4f46e5;
+    color: #ffffff;
+}
+
+#history tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+#history tbody tr:hover {
+    background-color: #eef2ff;
+}
+
+/* Colour of the Result column */
+#history td.win  { color: green; font-weight: 700; }
+#history td.lose { color: red;   font-weight: 700; }
+#history td.draw { color: grey;  font-weight: 700; }
+
+/* ---------- Action buttons ---------- */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    background: #1e1b4b;
+    color: #c7d2fe;
+    text-align: center;
+    padding: 20px 16px;
+    font-size: 0.9rem;
+}
+
+.site-footer p + p {
+    margin-top: 4px;
+}
+
+/* ---------- Responsive layout for small screens ---------- */
+@media (max-width: 520px) {
+    .site-header h1 { font-size: 1.7rem; }
+    .arena { gap: 12px; }
+    .arena img { width: 100px; height: 100px; }
+}
