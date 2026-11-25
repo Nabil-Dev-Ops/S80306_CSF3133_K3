@@ -2,8 +2,8 @@
 <!--
     Lab Exercise 6 - Quiz Application
     Subject : Web Design
-    Name    : ____________________
-    Matric  : ____________________
+    Name    : MUHAMMAD NABIL BIN TAHA
+    Matric  : S80306
 -->
 <html lang="en">
 <head>
@@ -47,11 +47,14 @@
                 <div id="timer-progress" class="timer-progress"></div>
             </div>
 
-            <h2 id="question-text" class="question-text"></h2>
+            <h2 id="question-text" class="question-text">Loading question...</h2>
             <div id="options" class="options" role="radiogroup" aria-labelledby="question-text"></div>
 
             <!-- Feedback section: correct / incorrect after each answer -->
-            <section id="feedback" class="feedback hidden" role="status" aria-live="polite"></section>
+            <section class="feedback-area" aria-labelledby="feedback-title">
+                <h3 id="feedback-title" class="visually-hidden">Feedback</h3>
+                <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
+            </section>
 
             <!-- Button to submit answers and navigate between questions -->
             <div class="actions">
