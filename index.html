@@ -20,6 +20,7 @@
             --accent-2: #60a5fa;
             --accent-3: #818cf8;
             --green: #34d399;
+            --yellow: #facc15;
             --radius: 14px;
             --shadow: 0 18px 40px -18px rgba(2, 8, 23, 0.95);
         }
@@ -242,6 +243,11 @@
             border: 1px solid rgba(52, 211, 153, 0.32);
             background: rgba(52, 211, 153, 0.1);
         }
+        .pill.js {
+            color: var(--yellow);
+            border-color: rgba(250, 204, 21, 0.32);
+            background: rgba(250, 204, 21, 0.1);
+        }
 
         .lab-body { padding: 22px 24px 26px; }
 
@@ -272,6 +278,7 @@
             padding: 0;
             list-style: none;
         }
+        .links:last-child { margin-bottom: 0; }
         .links a {
             position: relative;
             display: flex;
@@ -313,6 +320,11 @@
             font-weight: 800;
             letter-spacing: 0.02em;
         }
+        .file-icon.js {
+            background: rgba(250, 204, 21, 0.12);
+            border-color: rgba(250, 204, 21, 0.3);
+            color: var(--yellow);
+        }
         .links .txt { min-width: 0; }
         .links .name { display: block; font-weight: 600; font-size: 0.94rem; }
         .links .path {
@@ -322,6 +334,50 @@
             color: var(--muted-2);
             margin-top: 1px;
         }
+
+        /* ---------- featured project (Lab 6 quiz) ---------- */
+        .featured {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0 0 26px;
+            padding: 20px 22px;
+            border-radius: 12px;
+            border: 1px solid rgba(250, 204, 21, 0.28);
+            background:
+                linear-gradient(120deg, rgba(250, 204, 21, 0.08), rgba(56, 189, 248, 0.06)),
+                rgba(15, 23, 42, 0.85);
+        }
+        .featured .f-info { flex: 1 1 300px; }
+        .featured h3 { margin: 0 0 4px; font-size: 1.08rem; }
+        .featured p { margin: 0 0 12px; color: var(--muted); font-size: 0.9rem; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+        .chips li {
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: var(--panel-2);
+            color: var(--muted);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.72rem;
+        }
+        .btn-launch {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            border-radius: 10px;
+            background: linear-gradient(140deg, var(--yellow), #f59e0b);
+            color: #1a1300;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-decoration: none;
+            box-shadow: 0 12px 24px -14px rgba(250, 204, 21, 0.9);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .btn-launch:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -14px rgba(250, 204, 21, 1); }
 
         /* ---------- validation gallery ---------- */
         .validated {
@@ -432,6 +488,7 @@
             .lab-head { padding: 16px 18px; }
             .lab-body { padding: 18px 18px 22px; }
             .links { grid-template-columns: 1fr; }
+            .btn-launch { width: 100%; justify-content: center; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -458,6 +515,7 @@
                 <a href="#lab3">Lab 3</a>
                 <a href="#lab4">Lab 4</a>
                 <a href="#lab5">Lab 5</a>
+                <a href="#lab6">Lab 6</a>
                 <a href="#validation">Validation</a>
             </nav>
         </div>
@@ -468,9 +526,10 @@
             <h1>CSF3133 <span class="grad">Web Development</span>
 Lab Portfolio</h1>
             <p class="lead">
-                Five labs of hand-written HTML and CSS &mdash; from first headings and forms, through tables and
+                Six labs of hand-written HTML, CSS and JavaScript &mdash; from first headings and forms, through tables and
                 semantic markup, to HTML5 input types, entities, live <code>&lt;output&gt;</code>
-                calculators and fully styled pages with navigation bars, embedded video and forms.
+                calculators and fully styled pages with navigation bars, embedded video and forms, and finally
+                interactive JavaScript pages with events, form validation and a timed quiz application.
                 Validation screenshots for selected HTML and CSS files are shown below.
             </p>
 
@@ -483,11 +542,11 @@ Lab Portfolio</h1>
 
             <div class="stats">
                 <div class="stat">
-                    <div class="num">5</div>
+                    <div class="num">6</div>
                     <div class="lbl">Labs</div>
                 </div>
                 <div class="stat">
-                    <div class="num">42</div>
+                    <div class="num">52</div>
                     <div class="lbl">Pages</div>
                 </div>
                 <div class="stat">
@@ -848,6 +907,7 @@ Lab Portfolio</h1>
             </div>
         </section>
 
+        <!-- ============ LAB 5 ============ -->
         <section class="lab" id="lab5">
             <div class="lab-head">
                 <div class="lab-num">05</div>
@@ -952,6 +1012,116 @@ Lab Portfolio</h1>
                             <span class="meta"><span class="tick">&#10003;</span><span class="f">Lab5_ExerB.css</span></span>
                         </a>
                     </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ LAB 6 ============ -->
+        <section class="lab" id="lab6">
+            <div class="lab-head">
+                <div class="lab-num">06</div>
+                <div class="lab-title">
+                    <h2>Lab 6 &mdash; JavaScript</h2>
+                    <p>DOM manipulation, events, external scripts, form validation and Math functions</p>
+                </div>
+                <span class="pill js">JavaScript</span>
+            </div>
+            <div class="lab-body">
+                <p class="subhead">Lab exercise</p>
+                <div class="featured">
+                    <div class="f-info">
+                        <h3>Exercise 6: Web Design Quiz Application</h3>
+                        <p>A multiple-choice quiz with randomised questions, a 15-second countdown timer per question,
+                            instant correct/incorrect feedback and a final score summary.</p>
+                        <ul class="chips">
+                            <li>shuffleQuestions()</li>
+                            <li>startTimer()</li>
+                            <li>displayQuestion()</li>
+                            <li>checkAnswer()</li>
+                            <li>nextQuestion()</li>
+                            <li>startQuiz()</li>
+                        </ul>
+                    </div>
+                    <a class="btn-launch" href="lab6/index.html">Launch Quiz &#8594;</a>
+                </div>
+
+                <ul class="links">
+                    <li><a href="lab6/index.html">
+                        <span class="file-icon">EX</span>
+                        <span class="txt"><span class="name">Quiz Application (HTML)</span><span class="path">lab6/index.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/style.css">
+                        <span class="file-icon">CSS</span>
+                        <span class="txt"><span class="name">Quiz Stylesheet</span><span class="path">lab6/style.css</span></span>
+                    </a></li>
+                    <li><a href="lab6/script.js">
+                        <span class="file-icon js">JS</span>
+                        <span class="txt"><span class="name">Quiz Logic</span><span class="path">lab6/script.js</span></span>
+                    </a></li>
+                </ul>
+
+                <p class="subhead">Tutorial pages</p>
+                <ul class="links">
+                    <li><a href="lab6/firstjs.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">My First JS &amp; getElementById()</span><span class="path">lab6/firstjs.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/datetimejs.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Date and Time</span><span class="path">lab6/datetimejs.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/changelight.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Change HTML Attribute (Light Bulb)</span><span class="path">lab6/changelight.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/extjavascript.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">External JavaScript File</span><span class="path">lab6/extjavascript.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/disable-right-click.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Working with Events (Disable Right-Click)</span><span class="path">lab6/disable-right-click.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/multiplication-table.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Multiplication Table Generator</span><span class="path">lab6/multiplication-table.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/form-validation.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Form Validation</span><span class="path">lab6/form-validation.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/numeric-validation.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Numeric Input Validation</span><span class="path">lab6/numeric-validation.html</span></span>
+                    </a></li>
+                    <li><a href="lab6/guess-number.html">
+                        <span class="file-icon">HTML</span>
+                        <span class="txt"><span class="name">Guess the Number Game</span><span class="path">lab6/guess-number.html</span></span>
+                    </a></li>
+                </ul>
+
+                <p class="subhead">JavaScript files</p>
+                <ul class="links">
+                    <li><a href="lab6/message.js">
+                        <span class="file-icon js">JS</span>
+                        <span class="txt"><span class="name">message.js</span><span class="path">lab6/message.js</span></span>
+                    </a></li>
+                    <li><a href="lab6/multiplication-table.js">
+                        <span class="file-icon js">JS</span>
+                        <span class="txt"><span class="name">multiplication-table.js</span><span class="path">lab6/multiplication-table.js</span></span>
+                    </a></li>
+                    <li><a href="lab6/form-validation.js">
+                        <span class="file-icon js">JS</span>
+                        <span class="txt"><span class="name">form-validation.js</span><span class="path">lab6/form-validation.js</span></span>
+                    </a></li>
+                    <li><a href="lab6/numeric-validation.js">
+                        <span class="file-icon js">JS</span>
+                        <span class="txt"><span class="name">numeric-validation.js</span><span class="path">lab6/numeric-validation.js</span></span>
+                    </a></li>
+                    <li><a href="lab6/guess-number.js">
+                        <span class="file-icon js">JS</span>
+                        <span class="txt"><span class="name">guess-number.js</span><span class="path">lab6/guess-number.js</span></span>
+                    </a></li>
                 </ul>
             </div>
         </section>
